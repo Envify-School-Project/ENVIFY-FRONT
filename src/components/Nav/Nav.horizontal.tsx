@@ -1,12 +1,12 @@
 import React from 'react';
 import { GiHexagonalNut } from 'react-icons/gi';
-import PrimaryPutton from '../Button/Primary.button';
-import OutlineButton from '../Button/Outline.button';
-import LogoButton from '../Button/Logo.button';
+import { PrimaryButton } from '../Button/Primary.button';
+import { OutlineButton } from '../Button/Outline.button';
+import { LogoButton } from '../Button/Logo.button';
 import styled from '@emotion/styled';
 import { Box } from '@mantine/core';
 
-const NavHorizontal = styled.nav`
+const CustomNav = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,18 +16,16 @@ const NavHorizontal = styled.nav`
   padding: 1.5rem;
 `;
 
-const HeaderHorizontal = () => {
+export const NavHorizontal = () => {
   return (
-    <NavHorizontal>
+    <CustomNav>
       <LogoButton href={'/'}>{<GiHexagonalNut />}</LogoButton>
       <Box display="flex">
         <Box mr="1rem">
           <OutlineButton href={'/login'}>Login</OutlineButton>
         </Box>
-        <PrimaryPutton href={'/register'}>Register</PrimaryPutton>
+        <PrimaryButton href={'/register'}>Register</PrimaryButton>
       </Box>
-    </NavHorizontal>
+    </CustomNav>
   );
 };
-
-export default HeaderHorizontal;

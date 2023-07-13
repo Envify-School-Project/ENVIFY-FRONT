@@ -25,13 +25,11 @@ const LinkCustom = styled(Link)`
   }
 `;
 
-function ArrowButton({ href, children }: LinkProps) {
+export const ArrowButton = ({ href, children }: LinkProps) => {
   return (
     <LinkCustom href={href}>
       {children}
       <BsArrowRight />
     </LinkCustom>
   );
-}
-
-export default ArrowButton;
+};

@@ -15,8 +15,6 @@ const LinkCustom = styled(Link)`
   }
 `;
 
-function LogoButton({ href, children }: LinkProps) {
+export const LogoButton = ({ href, children }: LinkProps) => {
   return <LinkCustom href={href}>{children}</LinkCustom>;
-}
-
-export default LogoButton;
+};

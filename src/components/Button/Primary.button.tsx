@@ -9,12 +9,10 @@ const LinkCustom = styled(Link)`
   text-decoration: none;
 `;
 
-function PrimaryButton({ href, children }: LinkProps) {
+export const PrimaryButton = ({ href, children }: LinkProps) => {
   return (
     <Button color="violet">
       <LinkCustom href={href}>{children}</LinkCustom>
     </Button>
   );
-}
-
-export default PrimaryButton;
+};

@@ -20,7 +20,7 @@ export default function Landing() {
 
   return (
     <>
-      <HeaderHorizontal />
+      <NavHorizontal />
       <DivCustom>
         <Title
           order={1}

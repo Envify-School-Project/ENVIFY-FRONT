@@ -3,12 +3,12 @@ import React from 'react';
 import { PasswordInput } from '@mantine/core';
 import { InputTextProps } from '@/utils/types/component.type';
 
-function InputPassword({
+export const InputPassword = ({
   placeholder,
   label,
   description,
   required,
-}: InputTextProps) {
+}: InputTextProps) => {
   return (
     <PasswordInput
       placeholder={placeholder}
@@ -17,6 +17,4 @@ function InputPassword({
       withAsterisk={required}
     />
   );
-}
-
-export default InputPassword;
+};

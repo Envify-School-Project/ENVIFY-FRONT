@@ -3,12 +3,12 @@ import React from 'react';
 import { TextInput } from '@mantine/core';
 import { InputTextProps } from '@/utils/types/component.type';
 
-function InputText({
+export const InputText = ({
   placeholder,
   label,
   description,
   required,
-}: InputTextProps) {
+}: InputTextProps) => {
   return (
     <TextInput
       placeholder={placeholder}
@@ -17,6 +17,4 @@ function InputText({
       withAsterisk={required}
     />
   );
-}
-
-export default InputText;
+};

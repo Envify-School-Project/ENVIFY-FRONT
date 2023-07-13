@@ -8,8 +8,6 @@ const LinkCustom = styled(Link)`
   text-decoration: none;
 `;
 
-function TextButton({ href, children }: LinkProps) {
+export const TextButton = ({ href, children }: LinkProps) => {
   return <LinkCustom href={href}>{children}</LinkCustom>;
-}
-
-export default TextButton;
+};

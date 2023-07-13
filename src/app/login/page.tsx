@@ -18,7 +18,7 @@ export default function Login() {
 
   return (
     <>
-      <HeaderHorizontal />
+      <NavHorizontal />
       <DivCustom>
         <Title order={1} size={smallScreen ? '26px' : '32px'} mb="0.5rem">
           Welcome back
@@ -32,7 +32,7 @@ export default function Login() {
             placeholder="Your email"
             label="Email"
             required={true}
-            description={undefined}
+            {...getInputProps('password')}
           />
         </Box>
         <InputPassword

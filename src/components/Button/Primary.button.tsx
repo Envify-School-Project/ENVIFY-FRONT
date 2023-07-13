@@ -9,7 +9,7 @@ const LinkCustom = styled(Link)`
   text-decoration: none;
 `;
 
-function PrimaryPutton({ href, children }: LinkProps) {
+function PrimaryButton({ href, children }: LinkProps) {
   return (
     <Button color="violet">
       <LinkCustom href={href}>{children}</LinkCustom>
@@ -17,4 +17,4 @@ function PrimaryPutton({ href, children }: LinkProps) {
   );
 }
 
-export default PrimaryPutton;
+export default PrimaryButton;

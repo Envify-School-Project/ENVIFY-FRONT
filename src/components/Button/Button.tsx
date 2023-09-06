@@ -1,8 +1,7 @@
-'use client';
 import {
   Button as MantineButton,
   ButtonProps as MantineButtonProps,
-} from '@mantine/core';
+} from '@/components/mantine';
 import { GiHexagonalNut } from 'react-icons/gi';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';

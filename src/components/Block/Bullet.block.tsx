@@ -1,6 +1,4 @@
-'use client';
-import React from 'react';
-import { Container, Flex, Text, Title } from '@mantine/core';
+import { Container, Flex, Text, Title } from '@/components/mantine';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 export const BulletBlock = () => {

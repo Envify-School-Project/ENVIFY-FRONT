@@ -1,8 +1,15 @@
 'use client';
 import React from 'react';
 import { useForm } from '@mantine/form';
-import { Box, Button, Container, Text, TextInput, Title } from '@mantine/core';
-import { PasswordInput } from '@/components/Input/password/Password.input';
+import {
+  Box,
+  Button,
+  Container,
+  Text,
+  TextInput,
+  Title,
+  PasswordInput,
+} from '@/components/mantine';
 
 export const LoginForm = () => {
   const form = useForm<{ email: string; password: string }>({

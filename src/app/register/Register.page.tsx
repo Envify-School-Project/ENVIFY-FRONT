@@ -5,6 +5,28 @@ import { createStyles } from '@mantine/core';
 import { ButtonPrimary } from '@/components/Button/Button';
 import { BsArrowLeft } from 'react-icons/bs';
 
+export default function RegisterPage() {
+  const { classes } = useStyles();
+
+  return (
+    <>
+      <div className={classes.backPage}>
+        <ButtonPrimary href={'/'}>
+          <BsArrowLeft />
+        </ButtonPrimary>
+      </div>
+      <div className={classes.wrapper}>
+        <div className={classes.formContainer}>
+          <RegisterForm />
+        </div>
+        <div className={classes.blockContainer}>
+          <BulletBlock />
+        </div>
+      </div>
+    </>
+  );
+}
+
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: 'absolute',
@@ -39,25 +61,3 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
   },
 }));
-
-export default function RegisterPage() {
-  const { classes } = useStyles();
-
-  return (
-    <>
-      <div className={classes.backPage}>
-        <ButtonPrimary href={'/'}>
-          <BsArrowLeft />
-        </ButtonPrimary>
-      </div>
-      <div className={classes.wrapper}>
-        <div className={classes.formContainer}>
-          <RegisterForm />
-        </div>
-        <div className={classes.blockContainer}>
-          <BulletBlock />
-        </div>
-      </div>
-    </>
-  );
-}

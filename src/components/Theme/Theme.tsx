@@ -8,6 +8,7 @@ export default function Theme({ children }: { children: JSX.Element }) {
     <MantineProvider
       withGlobalStyles
       withNormalizeCSS
+      withCSSVariables
       theme={{
         defaultRadius: 5,
         white: '#ffffff',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Box } from '../../Mantine';
-import { Button } from '../../Button';
+import { Button, ButtonIcon } from '../../Button';
 import { GiHexagonalNut } from 'react-icons/gi';
 
 export const Header = () => {
@@ -12,9 +12,9 @@ export const Header = () => {
       p="md"
       h={80}
     >
-      <Button variant="subtle" href="/" h={48} p={12}>
-        <GiHexagonalNut size={24} color="#fff" />
-      </Button>
+      <ButtonIcon>
+        <GiHexagonalNut size={24} />
+      </ButtonIcon>
       <Flex>
         <Box mr="1rem">
           <Button variant="outline" href="/login">

@@ -46,7 +46,7 @@ export const buttonStyle = {
     }),
     subtle: (theme: MantineTheme) => ({
       root: {
-        minWidth: 'none',
+        minWidth: 'auto !important',
         ...theme.fn.hover({
           backgroundColor: theme.colors.dark[4],
         }),

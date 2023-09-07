@@ -3,7 +3,6 @@ import {
   ButtonProps as MantineButtonProps,
 } from '@/components/Mantine';
 import Link from 'next/link';
-import { GiHexagonalNut } from 'react-icons/gi';
 
 type ButtonProps = MantineButtonProps & {
   href?: string;
@@ -36,8 +35,8 @@ export const Button = ({
   );
 };
 
-export const ButtonLogo = (
-  <Button variant="subtle" href="/" h={48} p={12}>
-    <GiHexagonalNut size={24} color="#fff" />
+export const ButtonIcon = ({ children, ...props }: ButtonProps) => (
+  <Button {...props} variant="subtle" href="/" h={48} p={12}>
+    {children}
   </Button>
 );

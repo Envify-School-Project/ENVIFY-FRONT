@@ -37,6 +37,12 @@ export const mantineTheme: MantineThemeOverride = {
         color: theme.white,
         textDecoration: 'none',
       },
+
+      svg: {
+        fill: theme.white,
+        width: '1.5rem',
+        height: '1.5rem',
+      },
     },
   }),
   components: {

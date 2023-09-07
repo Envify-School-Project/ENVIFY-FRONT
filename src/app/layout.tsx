@@ -12,7 +12,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.className}>
         <Theme font={manrope.style}>
-          <main>{children}</main>
+          <main style={{ minHeight: '100vh' }}>{children}</main>
         </Theme>
       </body>
     </html>

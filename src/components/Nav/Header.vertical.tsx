@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import { BsArrowRight } from 'react-icons/bs';
 
 export const HeaderVertical = () => {

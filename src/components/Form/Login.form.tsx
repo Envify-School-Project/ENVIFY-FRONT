@@ -9,7 +9,7 @@ import {
   TextInput,
   Title,
   PasswordInput,
-} from '@/components/mantine';
+} from '@/components/Mantine';
 import { UserDto } from '@/utils/types/user.type';
 
 export const LoginForm = () => {

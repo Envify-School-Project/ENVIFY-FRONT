@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Box } from '@mantine/core';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import Link from 'next/link';
 import { GiHexagonalNut } from 'react-icons/gi';
 

@@ -1,7 +1,7 @@
 import {
   Button as MantineButton,
   ButtonProps as MantineButtonProps,
-} from '@/components/mantine';
+} from '@/components/Mantine';
 import Link from 'next/link';
 
 type ButtonProps = MantineButtonProps & {

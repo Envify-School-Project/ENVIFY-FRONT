@@ -1,4 +1,4 @@
-import { Container, Flex, Text, Title } from '@/components/mantine';
+import { Container, Flex, Text, Title } from '@/components/Mantine';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 export const BulletBlock = () => {

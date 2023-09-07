@@ -2,7 +2,7 @@
 import styles from './login.module.css';
 import { BulletBlock } from '@/components/Block/Bullet.block';
 import { LoginForm } from '../../components/Form/Login.form';
-import { Button } from '@/components/Button/Button';
+import { Button } from '@/components/Button';
 import { BsArrowLeft } from 'react-icons/bs';
 
 export const LoginContainer = () => {

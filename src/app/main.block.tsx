@@ -21,10 +21,14 @@ export const MainBlock = () => {
       </Container>
       <Flex justify="center" align="center" direction="column">
         <Box my="0.5rem">
-          <Button href={'/register'}>Get started</Button>
+          <Button redirectTo={'/register'}>Get started</Button>
         </Box>
         <Box my="0.5rem">
-          <Button outlined rightIcon={<BsArrowRight />} href="/community">
+          <Button
+            variant="arrow"
+            rightIcon={<BsArrowRight />}
+            redirectTo="/community"
+          >
             See community configuration
           </Button>
         </Box>

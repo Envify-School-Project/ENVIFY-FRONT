@@ -4,12 +4,10 @@ import React from 'react';
 export const VerticalNav = () => {
   return (
     <nav>
-      <Button outlined href="/">
-        Landing
-      </Button>
-      <Button href="/home">Home</Button>
-      <Button href="/login">Login</Button>
-      <Button href="/register">Register</Button>
+      <Button redirectTo="/">Landing</Button>
+      <Button redirectTo="/home">Home</Button>
+      <Button redirectTo="/login">Login</Button>
+      <Button redirectTo="/register">Register</Button>
     </nav>
   );
 };

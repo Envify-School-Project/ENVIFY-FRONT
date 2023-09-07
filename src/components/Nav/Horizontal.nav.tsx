@@ -2,19 +2,23 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Box } from '@mantine/core';
-import { Button, ButtonLogo } from '../Button/Button';
+import { Button } from '../Button/Button';
+import Link from 'next/link';
+import { GiHexagonalNut } from 'react-icons/gi';
 
 export const HorizontalNav = () => {
   return (
     <CustomNav>
-      <ButtonLogo />
+      <Link href={'/'}>
+        <GiHexagonalNut size={24} />
+      </Link>
       <Box display="flex">
         <Box mr="1rem">
-          <Button outlined href="/login">
+          <Button variant="outline" redirectTo="/login">
             Login
           </Button>
         </Box>
-        <Button href="/register">Register</Button>
+        <Button redirectTo="/register">Register</Button>
       </Box>
     </CustomNav>
   );

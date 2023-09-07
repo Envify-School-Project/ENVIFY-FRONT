@@ -9,7 +9,7 @@ export const LoginContainer = () => {
   return (
     <>
       <div className={styles.backPage}>
-        <Button href={'/'}>
+        <Button redirectTo={'/'}>
           <BsArrowLeft />
         </Button>
       </div>

@@ -22,6 +22,11 @@ export const mantineTheme: MantineThemeOverride = {
       backgroundColor: theme.colors.dark[0],
       color: theme.white,
       lineHeight: theme.lineHeight,
+
+      a: {
+        color: theme.white,
+        textDecoration: 'none',
+      },
     },
   }),
   components: {

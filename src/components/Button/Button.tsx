@@ -1,32 +1,32 @@
 import {
   Button as MantineButton,
   ButtonProps as MantineButtonProps,
-} from '@/components/mantine/index';
-import { GiHexagonalNut } from 'react-icons/gi';
+} from '@/components/mantine';
 import Link from 'next/link';
 
-interface ButtonProps extends MantineButtonProps {
-  href?: string;
+type ButtonProps = MantineButtonProps & {
+  redirectTo?: string;
   outlined?: boolean;
-}
+  variant?:
+    | 'filled'
+    | 'outline'
+    | 'light'
+    | 'white'
+    | 'default'
+    | 'subtle'
+    | 'gradient'
+    | 'arrow';
+};
 
 export const Button = ({
-  href,
+  redirectTo,
   variant = 'filled',
-  outlined,
   children,
   ...props
 }: ButtonProps) => {
-  const BaseButton = (
-    <MantineButton variant={outlined ? 'outline' : variant} {...props}>
-      {children}
+  return (
+    <MantineButton variant={variant} {...props}>
+      {redirectTo ? <Link href={redirectTo}>{children}</Link> : children}
     </MantineButton>
   );
-  return <>{href ? <Link href={href}>{BaseButton}</Link> : BaseButton}</>;
 };
-
-export const ButtonLogo = () => (
-  <Button href="/">
-    <GiHexagonalNut color="white" />
-  </Button>
-);

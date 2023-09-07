@@ -1,4 +1,4 @@
-import { MantineTheme } from '@mantine/core';
+import { MantineTheme, rem } from '@mantine/core';
 
 export const buttonStyle = {
   styles: () => ({
@@ -51,6 +51,10 @@ export const buttonStyle = {
         color: theme.white,
         backgroundColor: 'none',
         border: `none`,
+        textDecoration: 'underline',
+        textDecorationStyle: 'dashed',
+        textUnderlineOffset: rem(3),
+
         '&:hover': { textDecoration: 'underline' },
       },
     }),

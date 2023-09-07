@@ -1,61 +1,58 @@
 import { MantineTheme, rem } from '@mantine/core';
 
 export const buttonStyle = {
-  styles: () => ({
+  styles: (theme: MantineTheme) => ({
     root: {
-      height: 40,
+      height: rem(40),
       a: {
         textDecoration: 'none',
+        color: theme.white,
       },
     },
   }),
   variants: {
     filled: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
-        border: `1px solid ${theme.colors.violet[1]}`,
-        '&:hover': {
+        border: `${rem(1)} solid ${theme.colors.violet[1]}`,
+        ...theme.fn.hover({
           backgroundColor: theme.colors.violet[1],
-        },
+        }),
       },
     }),
     outline: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
-        border: `1px solid ${theme.white}`,
-        ...theme.fn.hover({
-          backgroundColor: theme.white,
-        }),
-        '&:hover': {
-          backgroundColor: theme.white,
-          color: theme.colors.violet[0],
-          border: `1px solid ${theme.colors.violet[0]}`,
-        },
+        border: `${rem(1)} solid ${theme.white}`,
         '&:disabled': {
           backgroundColor: 'transparent',
-          border: `1px solid ${theme.colors.gray[2]}`,
+          border: `${rem(1)} solid ${theme.colors.gray[2]}`,
         },
+
+        ...theme.fn.hover({
+          backgroundColor: theme.colors.dark[2],
+          color: theme.colors.violet[0],
+        }),
       },
     }),
     arrow: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
         backgroundColor: 'none',
         border: `none`,
         textDecoration: 'underline',
         textDecorationStyle: 'dashed',
         textUnderlineOffset: rem(3),
-
-        '&:hover': { textDecoration: 'underline' },
+        ...theme.fn.hover({
+          textDecoration: 'underline',
+        }),
+      },
+    }),
+    subtle: (theme: MantineTheme) => ({
+      root: {
+        ...theme.fn.hover({
+          backgroundColor: theme.colors.dark[2],
+        }),
       },
     }),
   },

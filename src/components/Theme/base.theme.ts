@@ -38,10 +38,28 @@ export const mantineTheme: MantineThemeOverride = {
         textDecoration: 'none',
       },
 
+      // TODO: set style directly in Input component
+      // TODO: fix color on password input eye icon
+      input: {
+        backgroundColor: theme.colors.dark[4] + '!important',
+      },
+
       svg: {
         fill: theme.white,
         width: '1.5rem',
         height: '1.5rem',
+      },
+
+      '.full-vh': {
+        height: '100vh',
+      },
+
+      '.x': {
+        width: '100%',
+      },
+
+      '.y': {
+        height: '100%',
       },
     },
   }),

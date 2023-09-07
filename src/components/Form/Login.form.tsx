@@ -43,7 +43,7 @@ export const LoginForm = () => {
           <TextInput
             placeholder="Your email"
             label="Email"
-            description={undefined}
+            name="email"
             required={true}
             {...form.getInputProps('email')}
           />
@@ -53,9 +53,10 @@ export const LoginForm = () => {
           label="Password"
           description="Password must include at least one letter, number and special character"
           required={true}
+          name="password"
           {...form.getInputProps('password')}
         />
-        <Button type="submit" mt={'2rem'} w={'100%'}>
+        <Button type="submit" mt={'2rem'} fullWidth>
           Sign in
         </Button>
       </form>

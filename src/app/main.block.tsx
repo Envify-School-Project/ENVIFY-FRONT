@@ -24,7 +24,7 @@ export const MainBlock = () => {
           <Button href={'/register'}>Get started</Button>
         </Box>
         <Box my="0.5rem">
-          <Button rightIcon={<BsArrowRight />} href="/community">
+          <Button outlined rightIcon={<BsArrowRight />} href="/community">
             See community configuration
           </Button>
         </Box>

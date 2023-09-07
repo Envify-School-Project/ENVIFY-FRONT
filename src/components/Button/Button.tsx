@@ -22,7 +22,7 @@ export const Button = ({
       {children}
     </MantineButton>
   );
-  return <>{href ? <Link href={href}>BaseButton</Link> : BaseButton}</>;
+  return <>{href ? <Link href={href}>{BaseButton}</Link> : BaseButton}</>;
 };
 
 export const ButtonLogo = () => (

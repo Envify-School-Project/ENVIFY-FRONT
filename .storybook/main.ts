@@ -8,7 +8,6 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-addon-pseudo-states',
-    'storybook-addon-react-docgen',
   ],
   framework: {
     name: '@storybook/nextjs',

@@ -21,13 +21,13 @@ export default function Home() {
         </Container>
         <Flex justify="center" align="center" direction="column" pb={'lg'}>
           <Box pb={'md'}>
-            <Button redirectTo={'/register'}>Get started</Button>
+            <Button href={'/register'}>Get started</Button>
           </Box>
           <Box>
             <Button
               variant="arrow"
               rightIcon={<BsArrowRight />}
-              redirectTo="/community"
+              href="/community"
             >
               See community configuration
             </Button>

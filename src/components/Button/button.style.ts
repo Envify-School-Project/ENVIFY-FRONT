@@ -31,7 +31,6 @@ export const buttonStyle = {
 
         ...theme.fn.hover({
           backgroundColor: theme.colors.dark[2],
-          color: theme.colors.violet[0],
         }),
       },
     }),

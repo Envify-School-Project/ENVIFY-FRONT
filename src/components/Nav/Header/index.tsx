@@ -12,16 +12,16 @@ export const Header = () => {
       p="md"
       h={80}
     >
-      <Button variant="subtle" redirectTo="/" h={48} p={12}>
+      <Button variant="subtle" href="/" h={48} p={12}>
         <GiHexagonalNut size={24} color="#fff" />
       </Button>
       <Flex>
         <Box mr="1rem">
-          <Button variant="outline" redirectTo="/login">
+          <Button variant="outline" href="/login">
             Login
           </Button>
         </Box>
-        <Button redirectTo="/register">Get started</Button>
+        <Button href="/register">Get started</Button>
       </Flex>
     </Flex>
   );

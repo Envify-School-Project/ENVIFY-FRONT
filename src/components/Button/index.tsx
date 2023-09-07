@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { GiHexagonalNut } from 'react-icons/gi';
 
 type ButtonProps = MantineButtonProps & {
-  redirectTo?: string;
+  href?: string;
   outlined?: boolean;
   variant?:
     | 'filled'
@@ -20,20 +20,24 @@ type ButtonProps = MantineButtonProps & {
 };
 
 export const Button = ({
-  redirectTo,
+  href,
   variant = 'filled',
   children,
   ...props
 }: ButtonProps) => {
-  return (
+  return href ? (
+    <MantineButton component={Link} href={href} variant={variant} {...props}>
+      {children}
+    </MantineButton>
+  ) : (
     <MantineButton variant={variant} {...props}>
-      {redirectTo ? <Link href={redirectTo}>{children}</Link> : children}
+      {children}
     </MantineButton>
   );
 };
 
 export const ButtonLogo = (
-  <Button variant="subtle" redirectTo="/" h={48} p={12}>
+  <Button variant="subtle" href="/" h={48} p={12}>
     <GiHexagonalNut size={24} color="#fff" />
   </Button>
 );

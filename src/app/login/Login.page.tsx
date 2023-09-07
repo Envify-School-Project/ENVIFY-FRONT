@@ -2,7 +2,7 @@
 import { BulletBlock } from '@/components/Block/Bullet.block';
 import { LoginForm } from '../../components/Form/Login.form';
 import { createStyles } from '@mantine/core';
-import { ButtonPrimary } from '@/components/Button/Button';
+import { Button } from '@/components/Button/Button';
 import { BsArrowLeft } from 'react-icons/bs';
 
 export default function LoginPage() {
@@ -11,9 +11,9 @@ export default function LoginPage() {
   return (
     <>
       <div className={classes.backPage}>
-        <ButtonPrimary href={'/'}>
+        <Button href={'/'}>
           <BsArrowLeft />
-        </ButtonPrimary>
+        </Button>
       </div>
       <div className={classes.wrapper}>
         <div className={classes.formContainer}>

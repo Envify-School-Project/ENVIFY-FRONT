@@ -2,7 +2,7 @@
 import { BulletBlock } from '@/components/Block/Bullet.block';
 import { RegisterForm } from '../../components/Form/Register.form';
 import { createStyles } from '@mantine/core';
-import { ButtonPrimary } from '@/components/Button/Button';
+import { Button } from '@/components/Button/Button';
 import { BsArrowLeft } from 'react-icons/bs';
 
 export default function RegisterPage() {
@@ -11,9 +11,9 @@ export default function RegisterPage() {
   return (
     <>
       <div className={classes.backPage}>
-        <ButtonPrimary href={'/'}>
+        <Button href={'/'}>
           <BsArrowLeft />
-        </ButtonPrimary>
+        </Button>
       </div>
       <div className={classes.wrapper}>
         <div className={classes.formContainer}>

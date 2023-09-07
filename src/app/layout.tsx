@@ -1,4 +1,4 @@
-import Theme from '../components/Theme/Theme';
+import Theme from '../components/Theme';
 import { Manrope } from 'next/font/google';
 
 const manrope = Manrope({ subsets: ['latin'] });

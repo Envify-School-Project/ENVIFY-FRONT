@@ -6,11 +6,20 @@ export const mantineTheme: MantineThemeOverride = {
   defaultRadius: 5,
   white: '#ffffff',
   primaryColor: 'violet',
-  primaryShade: 0,
   fontFamily: 'Manrope, sans-serif',
   colors: {
-    violet: ['#735BD1', '#9B8ADC', '#735BD1', '#735BD1', '#735BD1'],
-    dark: ['#171717', '#202020', '#5B5B5B', '#979797', '#CCCCCC'],
+    violet: [
+      '#efeaff',
+      '#ccc2f3',
+      '#aa9be5',
+      '#8874d9',
+      '#664ccd',
+      '#4c32b3',
+      '#3b278c',
+      '#291b66',
+      '#18103f',
+      '#08051b',
+    ],
   },
   globalStyles: (theme) => ({
     '*, *::before, *::after': {
@@ -19,7 +28,7 @@ export const mantineTheme: MantineThemeOverride = {
 
     body: {
       ...theme.fn.fontStyles(),
-      backgroundColor: theme.colors.dark[0],
+      backgroundColor: theme.colors.dark[7],
       color: theme.white,
       lineHeight: theme.lineHeight,
       minHeight: '100vh',

@@ -1,22 +1,19 @@
 import { MantineTheme, rem } from '@mantine/core';
 
 export const buttonStyle = {
-  styles: (theme: MantineTheme) => ({
+  styles: () => ({
     root: {
       height: rem(40),
-      a: {
-        textDecoration: 'none',
-        color: theme.white,
-      },
+      minWidth: rem(100),
     },
   }),
   variants: {
     filled: (theme: MantineTheme) => ({
       root: {
         color: theme.white,
-        border: `${rem(1)} solid ${theme.colors.violet[1]}`,
+        border: `${rem(1)} solid ${theme.colors.violet[4]}`,
         ...theme.fn.hover({
-          backgroundColor: theme.colors.violet[1],
+          backgroundColor: theme.colors.violet[4],
         }),
       },
     }),
@@ -26,11 +23,11 @@ export const buttonStyle = {
         border: `${rem(1)} solid ${theme.white}`,
         '&:disabled': {
           backgroundColor: 'transparent',
-          border: `${rem(1)} solid ${theme.colors.gray[2]}`,
+          border: `${rem(1)} solid ${theme.colors.dark[4]}`,
         },
 
         ...theme.fn.hover({
-          backgroundColor: theme.colors.dark[2],
+          backgroundColor: theme.colors.dark[4],
         }),
       },
     }),
@@ -49,8 +46,9 @@ export const buttonStyle = {
     }),
     subtle: (theme: MantineTheme) => ({
       root: {
+        minWidth: 'none',
         ...theme.fn.hover({
-          backgroundColor: theme.colors.dark[2],
+          backgroundColor: theme.colors.dark[4],
         }),
       },
     }),

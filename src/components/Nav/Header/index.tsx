@@ -6,7 +6,7 @@ import { GiHexagonalNut } from 'react-icons/gi';
 export const Header = () => {
   return (
     <Flex
-      sx={{ borderBottom: `1px solid var(--mantine-color-dark-2)` }}
+      sx={{ borderBottom: `1px solid var(--mantine-color-dark-4)` }}
       justify="space-between"
       align="center"
       p="md"

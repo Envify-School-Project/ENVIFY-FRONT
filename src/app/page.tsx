@@ -1,12 +1,12 @@
 import { Button } from '@/components/Button';
-import { HorizontalNav } from '@/components/Nav/Horizontal.nav';
+import { Header } from '@/components/Nav/Header';
 import { Box, Container, Flex, Text, Title } from '@/components/Mantine';
 import { BsArrowRight } from 'react-icons/bs';
 
 export default function Home() {
   return (
     <>
-      <HorizontalNav />
+      <Header />
       <Box mt={'10%'} mb={'xl'}>
         <Container size="md" pb={'lg'}>
           <Title order={1} size={'4rem'} ta="center">

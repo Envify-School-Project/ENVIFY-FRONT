@@ -36,7 +36,7 @@ export const Default: Story = {
   render: (args) => (
     <>
       <Button {...args} />
-      <Button variant={'outline'} {...args} />
+      <Button variant="outline" {...args} />
       <Button variant="arrow" rightIcon={<BsArrowRight />} {...args} />
     </>
   ),

@@ -7,6 +7,7 @@ export const mantineTheme: MantineThemeOverride = {
   white: '#ffffff',
   primaryColor: 'violet',
   primaryShade: 0,
+  fontFamily: 'Manrope, sans-serif',
   colors: {
     violet: ['#735BD1', '#9B8ADC', '#735BD1', '#735BD1', '#735BD1'],
     dark: ['#171717', '#202020', '#5B5B5B', '#979797', '#CCCCCC'],

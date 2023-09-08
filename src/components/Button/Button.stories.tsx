@@ -1,6 +1,6 @@
 import type { StoryObj, Meta } from '@storybook/react';
-import { Button } from './Button';
-import { Group } from '@/components/mantine';
+import { Button } from '.';
+import { Group } from '@/components/Mantine';
 import { BsArrowRight } from 'react-icons/bs';
 import React from 'react';
 
@@ -36,7 +36,7 @@ export const Default: Story = {
   render: (args) => (
     <>
       <Button {...args} />
-      <Button outlined {...args} />
+      <Button variant="outline" {...args} />
       <Button variant="arrow" rightIcon={<BsArrowRight />} {...args} />
     </>
   ),

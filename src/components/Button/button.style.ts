@@ -1,57 +1,55 @@
-import { MantineTheme } from '@mantine/core';
+import { MantineTheme, rem } from '@mantine/core';
 
 export const buttonStyle = {
   styles: () => ({
     root: {
-      height: 40,
-      a: {
-        textDecoration: 'none',
-      },
+      height: rem(40),
+      minWidth: rem(100),
     },
   }),
   variants: {
     filled: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
-        border: `1px solid ${theme.colors.violet[1]}`,
+        border: `${rem(1)} solid ${theme.colors.violet[4]}`,
         '&:hover': {
-          backgroundColor: theme.colors.violet[1],
+          backgroundColor: theme.colors.violet[4],
         },
       },
     }),
     outline: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
-        border: `1px solid ${theme.white}`,
-        ...theme.fn.hover({
-          backgroundColor: theme.white,
-        }),
-        '&:hover': {
-          backgroundColor: theme.white,
-          color: theme.colors.violet[0],
-          border: `1px solid ${theme.colors.violet[0]}`,
-        },
+        border: `${rem(1)} solid ${theme.white}`,
         '&:disabled': {
           backgroundColor: 'transparent',
-          border: `1px solid ${theme.colors.gray[2]}`,
+          border: `${rem(1)} solid ${theme.colors.dark[4]}`,
+        },
+
+        '&:hover': {
+          backgroundColor: theme.colors.dark[4],
         },
       },
     }),
     arrow: (theme: MantineTheme) => ({
       root: {
-        a: {
-          color: theme.white,
-        },
         color: theme.white,
         backgroundColor: 'none',
         border: `none`,
-        '&:hover': { textDecoration: 'underline' },
+        textDecoration: 'underline',
+        textDecorationStyle: 'dashed',
+        textUnderlineOffset: rem(3),
+        '&:hover': {
+          textDecoration: 'underline',
+        },
+      },
+    }),
+    subtle: (theme: MantineTheme) => ({
+      root: {
+        minWidth: 'auto !important',
+        '&:hover': {
+          backgroundColor: theme.colors.dark[4],
+        },
       },
     }),
   },

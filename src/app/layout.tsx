@@ -1,4 +1,7 @@
-import Theme from '../components/Theme/Theme';
+import Theme from '../components/Theme';
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -7,9 +10,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Theme>
-          <main>{children}</main>
+      <body className={manrope.className}>
+        <Theme font={manrope.style}>
+          <main style={{ minHeight: '100vh' }}>{children}</main>
         </Theme>
       </body>
     </html>

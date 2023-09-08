@@ -12,9 +12,9 @@ export const buttonStyle = {
       root: {
         color: theme.white,
         border: `${rem(1)} solid ${theme.colors.violet[4]}`,
-        ...theme.fn.hover({
+        '&:hover': {
           backgroundColor: theme.colors.violet[4],
-        }),
+        },
       },
     }),
     outline: (theme: MantineTheme) => ({
@@ -26,9 +26,9 @@ export const buttonStyle = {
           border: `${rem(1)} solid ${theme.colors.dark[4]}`,
         },
 
-        ...theme.fn.hover({
+        '&:hover': {
           backgroundColor: theme.colors.dark[4],
-        }),
+        },
       },
     }),
     arrow: (theme: MantineTheme) => ({
@@ -39,17 +39,17 @@ export const buttonStyle = {
         textDecoration: 'underline',
         textDecorationStyle: 'dashed',
         textUnderlineOffset: rem(3),
-        ...theme.fn.hover({
+        '&:hover': {
           textDecoration: 'underline',
-        }),
+        },
       },
     }),
     subtle: (theme: MantineTheme) => ({
       root: {
         minWidth: 'auto !important',
-        ...theme.fn.hover({
+        '&:hover': {
           backgroundColor: theme.colors.dark[4],
-        }),
+        },
       },
     }),
   },

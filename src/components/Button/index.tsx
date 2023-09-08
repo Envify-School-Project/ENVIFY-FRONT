@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 type ButtonProps = MantineButtonProps & {
   href?: string;
-  outlined?: boolean;
   variant?:
     | 'filled'
     | 'outline'

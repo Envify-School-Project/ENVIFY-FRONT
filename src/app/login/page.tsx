@@ -9,7 +9,7 @@ export default function Login() {
     <>
       <Flex align="center" className="full-vh">
         <Box
-          className="y"
+          className="h-100"
           sx={{
             backgroundColor: 'var(--mantine-color-dark-5)',
             borderRight: '1px solid var(--mantine-color-dark-4)',

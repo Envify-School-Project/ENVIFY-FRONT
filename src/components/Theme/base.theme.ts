@@ -54,11 +54,11 @@ export const mantineTheme: MantineThemeOverride = {
         height: '100vh',
       },
 
-      '.x': {
+      '.w-100': {
         width: '100%',
       },
 
-      '.y': {
+      '.h-100': {
         height: '100%',
       },
     },

@@ -15,7 +15,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Tests') {
             steps {
                 sh 'npm run test:types'
                 sh 'npm run test:lint'

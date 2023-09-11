@@ -7,6 +7,9 @@ export const mantineTheme: MantineThemeOverride = {
   white: '#ffffff',
   primaryColor: 'violet',
   fontFamily: 'Manrope, sans-serif',
+  spacing: {
+    xxs: '5px',
+  },
   colors: {
     violet: [
       '#efeaff',
@@ -36,12 +39,6 @@ export const mantineTheme: MantineThemeOverride = {
       a: {
         color: theme.white,
         textDecoration: 'none',
-      },
-
-      // TODO: set style directly in Input component
-      // TODO: fix color on password input eye icon
-      input: {
-        backgroundColor: theme.colors.dark[4] + '!important',
       },
 
       svg: {

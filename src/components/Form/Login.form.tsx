@@ -4,7 +4,6 @@ import { useForm } from '@mantine/form';
 import {
   Box,
   Button,
-  Container,
   Text,
   TextInput,
   Title,
@@ -30,16 +29,16 @@ export const LoginForm = () => {
   });
 
   return (
-    <Container size="sm" p={'2rem'} my={'2rem'}>
-      <Title order={1} size={'2.5rem'} mb={'0.5rem'}>
+    <Box>
+      <Title order={1} size={40} mb={8}>
         Welcome back
       </Title>
-      <Text size="md" mb={'2rem'}>
+      <Text size="md" mb={32}>
         Sign in to your account
       </Text>
 
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <Box mb="0.75rem">
+        <Box mb={12}>
           <TextInput
             placeholder="Your email"
             label="Email"
@@ -51,15 +50,14 @@ export const LoginForm = () => {
         <PasswordInput
           placeholder="Your password"
           label="Password"
-          description="Password must include at least one letter, number and special character"
           required={true}
           name="password"
           {...form.getInputProps('password')}
         />
-        <Button type="submit" mt={'2rem'} fullWidth>
+        <Button type="submit" mt={32} fullWidth>
           Sign in
         </Button>
       </form>
-    </Container>
+    </Box>
   );
 };

@@ -1,6 +1,6 @@
-import { MantineTheme, rem } from '@mantine/core';
+import { MantineTheme, MantineThemeComponent, rem } from '@mantine/core';
 
-export const buttonStyle = {
+export const buttonStyle: MantineThemeComponent = {
   styles: () => ({
     root: {
       height: rem(40),

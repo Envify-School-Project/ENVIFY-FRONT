@@ -10,6 +10,9 @@ pipeline {
         }
         stage('Build') {
             steps {
+                script {
+                    echo "Test de zinzin :"
+                }
                 sh 'npm install -g npm@6'
                 sh 'rm -r node_modules'
                 sh 'npm install'

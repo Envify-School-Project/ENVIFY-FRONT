@@ -1,12 +1,14 @@
 import React from 'react';
-import { Flex, Box } from '../../Mantine';
+import { Flex, Box } from '@mantine/core';
 import { Button, ButtonIcon } from '../../Button';
 import { GiHexagonalNut } from 'react-icons/gi';
 
 export const Header = () => {
   return (
     <Flex
-      sx={{ borderBottom: `1px solid var(--mantine-color-dark-4)` }}
+      style={{
+        borderBottom: `1px solid var(--mantine-color-dark-4)`,
+      }}
       justify="space-between"
       align="center"
       p="md"

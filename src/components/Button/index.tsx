@@ -1,20 +1,12 @@
 import {
   Button as MantineButton,
   ButtonProps as MantineButtonProps,
-} from '@/components/Mantine';
+} from '@mantine/core';
 import Link from 'next/link';
 
 type ButtonProps = MantineButtonProps & {
   href?: string;
-  variant?:
-    | 'filled'
-    | 'outline'
-    | 'light'
-    | 'white'
-    | 'default'
-    | 'subtle'
-    | 'gradient'
-    | 'arrow';
+  variant?: MantineButtonProps['variant'] | 'arrow';
 };
 
 export const Button = ({

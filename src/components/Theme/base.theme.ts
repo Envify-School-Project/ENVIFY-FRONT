@@ -1,6 +1,6 @@
 import { CSSVariablesResolver, createTheme, rem } from '@mantine/core';
-import { baseInputStyle } from '../Input/BaseInput.style';
-import { buttonStyle } from '../Button/Button.style';
+import { buttonStyle } from '../Button/button.style';
+import { baseInputStyle } from '../Input/baseInput.style';
 
 export const mantineTheme = createTheme({
   defaultRadius: 5,

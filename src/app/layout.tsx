@@ -1,3 +1,4 @@
+import { Theme } from '@/components/Theme';
 import '@mantine/core/styles.css';
 import './global.css';
 import { Theme } from '@/components/Theme';

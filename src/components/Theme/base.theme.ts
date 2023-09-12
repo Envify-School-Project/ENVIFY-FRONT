@@ -1,8 +1,9 @@
-import { MantineThemeOverride } from '@mantine/core';
-import { buttonStyle } from '../Button/button.style';
-import { baseInputStyle } from '../Input/baseInput.style';
+import { CSSVariablesResolver, createTheme, rem } from '@mantine/core';
+import { buttonStyle } from '../Button/Button.style';
+import { baseInputStyle } from '../Input/BaseInput.style';
+import { baseLoaderStyle } from '../Loader/baseLoader.style';
 
-export const mantineTheme: MantineThemeOverride = {
+export const mantineTheme = createTheme({
   defaultRadius: 5,
   white: '#ffffff',
   primaryColor: 'violet',
@@ -21,51 +22,23 @@ export const mantineTheme: MantineThemeOverride = {
       '#08051b',
     ],
   },
-  globalStyles: (theme) => ({
-    '*, *::before, *::after': {
-      boxSizing: 'border-box',
-    },
-
-    body: {
-      ...theme.fn.fontStyles(),
-      backgroundColor: theme.colors.dark[7],
-      color: theme.white,
-      lineHeight: theme.lineHeight,
-      minHeight: '100vh',
-
-      a: {
-        color: theme.white,
-        textDecoration: 'none',
-      },
-
-      // TODO: set style directly in Input component
-      // TODO: fix color on password input eye icon
-      input: {
-        backgroundColor: theme.colors.dark[4] + '!important',
-      },
-
-      svg: {
-        fill: theme.white,
-        width: '1.5rem',
-        height: '1.5rem',
-      },
-
-      '.full-vh': {
-        height: '100vh',
-      },
-
-      '.w-100': {
-        width: '100%',
-      },
-
-      '.h-100': {
-        height: '100%',
-      },
-    },
-  }),
   components: {
     Button: buttonStyle,
     TextInput: baseInputStyle,
     PasswordInput: baseInputStyle,
+    Skeleton: baseLoaderStyle,
   },
-};
+  other: {
+    spacing: {
+      xxs: rem(5),
+    },
+  },
+});
+
+export const cssResolver: CSSVariablesResolver = (theme) => ({
+  variables: {
+    '--mantine-spacing-xxs': theme.other.spacing.xxs,
+  },
+  light: {},
+  dark: {},
+});

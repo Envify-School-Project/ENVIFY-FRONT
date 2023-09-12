@@ -1,26 +1,17 @@
 'use client';
 import { MantineProvider } from '@mantine/core';
-import { mantineTheme } from './base.theme';
+import { cssResolver, mantineTheme } from './base.theme';
+import { Manrope } from 'next/font/google';
 
-export default function Theme({
-  children,
-  font,
-}: {
-  children: JSX.Element;
-  font: {
-    fontFamily: string;
-    fontWeight?: number | undefined;
-    fontStyle?: string | undefined;
-  };
-}) {
+const manrope = Manrope({ subsets: ['latin'] });
+
+export const Theme = ({ children }: { children: JSX.Element }) => {
   return (
     <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      withCSSVariables
-      theme={{ ...mantineTheme, ...font }}
+      theme={{ ...mantineTheme, ...manrope.style }}
+      cssVariablesResolver={cssResolver}
     >
       {children}
     </MantineProvider>
   );
-}
+};

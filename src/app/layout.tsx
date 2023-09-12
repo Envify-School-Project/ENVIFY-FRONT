@@ -1,7 +1,5 @@
-import Theme from '../components/Theme';
-import { Manrope } from 'next/font/google';
-
-const manrope = Manrope({ subsets: ['latin'] });
+import '@mantine/core/styles.css';
+import './global.css';
 
 export default function RootLayout({
   children,
@@ -10,9 +8,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={manrope.className}>
-        <Theme font={manrope.style}>
-          <main style={{ minHeight: '100vh' }}>{children}</main>
+      <body>
+        <Theme>
+            <main>{children}</main>
         </Theme>
       </body>
     </html>

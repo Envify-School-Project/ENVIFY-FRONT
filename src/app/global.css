@@ -22,6 +22,11 @@ svg {
   height: 1.5rem;
 }
 
+p,
+span {
+  font-weight: 600 !important;
+}
+
 .full-vh {
   height: 100vh;
 }

@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 import './global.css';
+import { Theme } from '@/components/Theme';
 
 export default function RootLayout({
   children,
@@ -10,7 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme>
-            <main>{children}</main>
+          <main>{children}</main>
         </Theme>
       </body>
     </html>

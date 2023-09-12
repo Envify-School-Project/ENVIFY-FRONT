@@ -1,7 +1,6 @@
 import { CSSVariablesResolver, createTheme, rem } from '@mantine/core';
-import { buttonStyle } from '../Button/Button.style';
 import { baseInputStyle } from '../Input/BaseInput.style';
-import { baseLoaderStyle } from '../Loader/baseLoader.style';
+import { buttonStyle } from '../Button/Button.style';
 
 export const mantineTheme = createTheme({
   defaultRadius: 5,
@@ -26,7 +25,6 @@ export const mantineTheme = createTheme({
     Button: buttonStyle,
     TextInput: baseInputStyle,
     PasswordInput: baseInputStyle,
-    Skeleton: baseLoaderStyle,
   },
   other: {
     spacing: {

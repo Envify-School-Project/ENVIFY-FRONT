@@ -6,6 +6,7 @@ export type Package = {
 };
 
 export type Config = {
+  id: number;
   name: string;
   created_at: string;
   packages: Package[];

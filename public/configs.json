@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "docker/node",
         "created_at": "2021-08-10T17:00:00Z",
         "packages": [
@@ -24,6 +25,7 @@
         ]
     },
     {
+        "id": 2,
         "name": "docker/mongodb",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [
@@ -42,6 +44,7 @@
         ]
     },
     {
+        "id": 2,
         "name": "docker/postgresql",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [
@@ -60,6 +63,7 @@
         ]
     },
     {
+        "id": 3,
         "name": "docker/redis",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [
@@ -78,6 +82,7 @@
         ]
     },
     {
+        "id": 4,
         "name": "docker/nginx",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [
@@ -96,6 +101,7 @@
         ]
     },
     {
+        "id": 5,
         "name": "docker/wordpress",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [
@@ -126,6 +132,7 @@
         ]
     },
     {
+        "id": 6,
         "name": "docker/elasticsearch",
         "created_at": "2021-09-01T12:00:00Z",
         "packages": [

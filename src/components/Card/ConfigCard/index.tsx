@@ -11,7 +11,7 @@ export const ConfigCard = ({ config }: { config: Config }) => {
   const formattedCreatedAt = useFormatDateRelative(config?.created_at);
 
   return (
-    <Link href={`/dashboard/configs/${config.id}`}>
+    <Link href={`/dashboard/config/${config.id}`}>
       <Box className={`${classes.configCard} h-100`} p="md">
         <Flex justify="space-between">
           <Text component="p">{config.name}</Text>

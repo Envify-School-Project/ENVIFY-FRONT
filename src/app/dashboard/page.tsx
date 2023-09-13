@@ -19,7 +19,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <Button href="/dashboard/config/new">Create new config</Button>
+      <Button href="/dashboard/config/create">Create new config</Button>
       {arrayOf3Configs.length > 0 ? (
         <Box mt={36}>
           <Button

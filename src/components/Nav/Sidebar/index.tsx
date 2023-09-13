@@ -5,7 +5,7 @@ import { AppShellNavbar, Box, Text } from '@mantine/core';
 export const Sidebar = () => {
   return (
     <AppShellNavbar className={classes.navbar} bg="dark.6" withBorder>
-      <Text component="p" c="white" mb={56} px="xs">
+      <Text component={Link} href="/dashboard" c="white" mb={56} px="xs">
         Dashboard
       </Text>
       <Text component="p" c="dark.3" px="xs">

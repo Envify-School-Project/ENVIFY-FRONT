@@ -16,7 +16,11 @@ const getUserConfigById = async (slug: string) => {
 
   return filteredResponse;
 };
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function ReadConfig({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const config: Config | undefined = await getUserConfigById(`${params.slug}`);
 
   return <Title order={1}>Config - {config?.name}</Title>;

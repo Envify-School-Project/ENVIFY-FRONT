@@ -1,7 +1,7 @@
 export type Package = {
   name: string;
   alias: string;
-  version?: string;
+  version?: string | string[];
   logo?: string;
 };
 

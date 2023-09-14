@@ -9,12 +9,12 @@ type CardCheckBoxProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?(checked: boolean): void;
-  image: string;
+  image?: string;
   title: string;
-  version: string[];
+  version?: string[] | string;
 };
 
-export const CardCheckBox = ({
+export const CheckboxCard = ({
   checked,
   defaultChecked,
   onChange,
@@ -47,16 +47,20 @@ export const CardCheckBox = ({
 
         <Box mr="sm">
           <Text c="white">{title}</Text>
-          <Select
-            data={version}
-            placeholder={version[0]}
-            classNames={{
-              dropdown: classes.cardCheckBoxDropdown,
-              input: classes.cardCheckBoxInput,
-              option: classes.cardCheckBoxOption,
-            }}
-            onChange={handleValue}
-          />
+          {version instanceof Array ? (
+            <Select
+              data={version}
+              placeholder={version && version[0]}
+              classNames={{
+                dropdown: classes.cardCheckBoxDropdown,
+                input: classes.cardCheckBoxInput,
+                option: classes.cardCheckBoxOption,
+              }}
+              onChange={handleValue}
+            />
+          ) : (
+            <Text c="white">{version}</Text>
+          )}
         </Box>
       </Flex>
 

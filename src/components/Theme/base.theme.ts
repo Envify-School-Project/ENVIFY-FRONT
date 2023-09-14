@@ -8,6 +8,9 @@ export const mantineTheme = createTheme({
   white: '#ffffff',
   primaryColor: 'violet',
   fontFamily: 'Manrope, sans-serif',
+  headings: {
+    fontWeight: '600',
+  },
   colors: {
     violet: [
       '#f1effb',

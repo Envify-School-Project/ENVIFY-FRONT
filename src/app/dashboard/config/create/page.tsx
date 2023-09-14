@@ -3,9 +3,7 @@ import { Stepper, StepperCompleted, StepperStep, Title } from '@mantine/core';
 export default function CreateConfig() {
   return (
     <>
-      <Title py={64} order={1}>
-        Create new config
-      </Title>
+      <Title order={1}>Create new config</Title>
       <Stepper active={0}>
         <StepperStep
           label="Choose a config name"

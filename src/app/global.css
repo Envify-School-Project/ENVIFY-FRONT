@@ -23,7 +23,9 @@ svg {
 }
 
 p,
-span {
+span,
+a,
+button {
   font-weight: 600 !important;
 }
 

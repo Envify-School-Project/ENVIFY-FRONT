@@ -26,11 +26,20 @@ export default async function ReadConfig({
 
   return (
     <>
-      <Title py={64} order={1}>
+      <Title order={1} mb="xl">
         Config - {config?.name}
       </Title>
-      <BlockScript code="npm install" comment="install the deps" />
-      <BlockScript code="npm install" comment="install the deps" />
+      {config?.scripts && config?.scripts.length > 0 ? (
+        config?.scripts?.map((script) => (
+          <BlockScript
+            key={script.comment}
+            code={script.script}
+            comment={script.comment}
+          />
+        ))
+      ) : (
+        <p>No scripts found</p>
+      )}
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <AppShell navbar={{ width: 250, breakpoint: 'sm' }} pt="xl">
+      <AppShell navbar={{ width: 250, breakpoint: 'sm' }}>
         <Sidebar />
         <AppShellMain>
           <Container size="lg">{children}</Container>

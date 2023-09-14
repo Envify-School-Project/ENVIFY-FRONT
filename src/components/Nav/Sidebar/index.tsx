@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import classes from './Sidebar.module.css';
-import { AppShellNavbar, Box, Text } from '@mantine/core';
+import { AppShellNavbar, Text } from '@mantine/core';
 
 export const Sidebar = () => {
   return (
@@ -12,9 +12,14 @@ export const Sidebar = () => {
         Configurations
       </Text>
       {/* TODO: Create all links and make loops */}
-      <Box component={Link} p="xs" href="/" className={classes.link}>
+      <Text
+        component={Link}
+        p="xs"
+        href="/dashboard/config/all"
+        className={classes.link}
+      >
         My configurations
-      </Box>
+      </Text>
     </AppShellNavbar>
   );
 };

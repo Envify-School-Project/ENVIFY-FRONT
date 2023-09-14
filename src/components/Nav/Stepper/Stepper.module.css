@@ -3,24 +3,33 @@
   border: 2px solid white;
   color: white;
   &[data-completed] {
-    border-color: var(--mantine-color-violet-4);
-    background-color: var(--mantine-color-violet-4);
+    border-color: var(--mantine-color-violet-3);
+    background-color: var(--mantine-color-violet-7);
   }
   &[data-progress] {
     border-color: var(--mantine-color-violet-4);
   }
 }
 .stepperSeparator {
-  background-color: var(--mantine-color-dark-3);
+  background-color: var(--mantine-color-dark-7);
   &[data-active='true'] {
     background-color: var(--mantine-color-violet-3);
   }
 }
 .stepperBtn {
-  background-color: transparent;
   color: var(--mantine-color-white);
-  border: 2px solid var(--mantine-color-violet-3);
+
   &[data-completed='true'] {
-    background-color: var(--mantine-color-violet-4);
+    border: 2px solid var(--mantine-color-violet-3);
+    background-color: var(--mantine-color-violet-7);
   }
+
+  &[data-progress='true'] {
+    border: 2px solid var(--mantine-color-violet-3);
+  }
+}
+
+.scrollArea {
+  flex-grow: 1;
+  height: 60vh;
 }

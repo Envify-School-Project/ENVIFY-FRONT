@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Stepper as StepperContainer, ScrollArea, Flex } from '@mantine/core';
+import { Stepper as StepperContainer, Flex, ScrollArea } from '@mantine/core';
 import { Button } from '@mantine/core';
 import classes from './Stepper.module.css';
 
@@ -56,7 +56,7 @@ export const Stepper = ({ children, type = 'create' }: StepperProps) => {
 
   return (
     <>
-      <Flex direction="column" gap="lg">
+      <Flex direction="column" gap="lg" className={classes.wrapper}>
         <StepperContainer
           color="violet"
           radius="sm"

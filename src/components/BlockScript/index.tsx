@@ -16,6 +16,7 @@ export const BlockScript = ({ comment, code }: BlockScriptProps) => {
     <Box
       className={`${classes.blockScriptContainer} ${sourceCodePro.className}`}
       p="md"
+      mb="md"
     >
       <Text size="md" component="p">
         {comment}

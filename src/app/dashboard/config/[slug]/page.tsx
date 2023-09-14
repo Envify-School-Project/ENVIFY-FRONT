@@ -1,3 +1,4 @@
+import { BlockScript } from '@/components/BlockScript';
 import type { Config } from '@/utils/types/config.type';
 import { Title } from '@mantine/core';
 
@@ -23,5 +24,13 @@ export default async function ReadConfig({
 }) {
   const config: Config | undefined = await getUserConfigById(`${params.slug}`);
 
-  return <Title order={1}>Config - {config?.name}</Title>;
+  return (
+    <>
+      <Title py={64} order={1}>
+        Config - {config?.name}
+      </Title>
+      <BlockScript code="npm install" comment="install the deps" />
+      <BlockScript code="npm install" comment="install the deps" />
+    </>
+  );
 }

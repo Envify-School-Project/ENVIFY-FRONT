@@ -4,6 +4,7 @@ import { Box, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import useSliceArrayBy from '@/utils/hooks/useSliceArrayBy';
 import type { Config } from '@/utils/types/config.type';
+import { BlockScript } from '@/components/BlockScript';
 
 const getUserConfigs = async () => {
   const res = await fetch(`${process.env.BASE_API_URL}/configs.json`);
@@ -20,6 +21,9 @@ export default async function Dashboard() {
   return (
     <>
       <Button href="/dashboard/config/create">Create new config</Button>
+
+      <BlockScript code="npm install" comment="install the deps" />
+
       {arrayOf3Configs.length > 0 ? (
         <Box mt={36}>
           <Button

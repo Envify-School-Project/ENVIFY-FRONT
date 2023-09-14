@@ -1,20 +1,23 @@
 import React from 'react';
-import { Code, Text, Box } from '@mantine/core';
 import classes from './BlockScript.module.css';
+import { Code, Text, Box } from '@mantine/core';
+import { Source_Code_Pro } from 'next/font/google';
+import { ButtonCopy } from '../Button/Copy.Button';
+
+const sourceCodePro = Source_Code_Pro({ subsets: ['latin'] });
 
 type BlockScriptProps = {
   comment?: string;
-  code?: string;
+  code: string;
 };
 
 export const BlockScript = ({ comment, code }: BlockScriptProps) => {
   return (
-    <Box className={classes.blockScriptContainer} p="sm">
-      <Text
-        size="md"
-        mb="xs"
-        ff="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace"
-      >
+    <Box
+      className={`${classes.blockScriptContainer} ${sourceCodePro.className}`}
+      p="md"
+    >
+      <Text size="md" component="p">
         {comment}
       </Text>
       <Code
@@ -23,9 +26,14 @@ export const BlockScript = ({ comment, code }: BlockScriptProps) => {
         }}
         fz="md"
         c="white"
+        p={0}
+        style={{ ...sourceCodePro.style }}
       >
         {code}
       </Code>
+      <Box className={classes.copy} p="md">
+        <ButtonCopy value={code} />
+      </Box>
     </Box>
   );
 };

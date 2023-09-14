@@ -42,3 +42,8 @@
     }
   }
 }
+
+.copyIcon {
+  fill: none;
+  stroke: var(--mantine-color-dark-3);
+}

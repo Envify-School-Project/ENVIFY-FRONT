@@ -1,16 +1,9 @@
 import { ConfigCard } from '@/components/Card/ConfigCard';
 import type { Config } from '@/utils/types/config.type';
 import { Grid, GridCol, Title } from '@mantine/core';
-
-const getUserConfigs = async () => {
-  const res = await fetch(`${process.env.BASE_API_URL}/configs.json`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-};
+import { apiClient } from '@/utils/api/apiFactory';
 export default async function ConfigsList() {
-  const configs: Config[] = await getUserConfigs();
+  const configs: Config[] = await apiClient.get('/configs.json');
 
   return (
     <>

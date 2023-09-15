@@ -3,64 +3,24 @@
     "name": "React",
     "alias": "react",
     "version": ["17.0.2", "16.14.0"],
-    "logo": "https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png",
-    "scripts": [
-      {
-        "comment": "install react",
-        "script": "sudo apt install react"
-      },
-      {
-        "comment": "install npm",
-        "script": "sudo apt install npm"
-      }
-    ]
+    "logo": "https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png"
   },
   {
     "name": "Vue",
     "alias": "vue",
     "version": ["3.2.6", "2.6.14"],
-    "logo": "https://cdn.iconscout.com/icon/free/png-256/vue-282497.png",
-    "scripts": [
-      {
-        "comment": "install vue",
-        "script": "sudo apt install vue"
-      },
-      {
-        "comment": "install npm",
-        "script": "sudo apt install npm"
-      }
-    ]
+    "logo": "https://cdn.iconscout.com/icon/free/png-256/vue-282497.png"
   },
   {
     "name": "Angular",
     "alias": "angular",
     "version": ["12.2.0", "11.2.0"],
-    "logo": "https://cdn.iconscout.com/icon/free/png-256/angular-3-226070.png",
-    "scripts": [
-      {
-        "comment": "install angular",
-        "script": "sudo apt install angular"
-      },
-      {
-        "comment": "install npm",
-        "script": "sudo apt install npm"
-      }
-    ]
+    "logo": "https://cdn.iconscout.com/icon/free/png-256/angular-3-226070.png"
   },
   {
     "name": "Node",
     "alias": "node",
     "version": ["18.0.0", "2.0.0"],
-    "logo": "https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png",
-    "scripts": [
-      {
-        "comment": "install node",
-        "script": "sudo apt install node"
-      },
-      {
-        "comment": "install npm",
-        "script": "sudo apt install npm"
-      }
-    ]
+    "logo": "https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png"
   }
 ]

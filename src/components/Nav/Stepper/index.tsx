@@ -12,10 +12,11 @@ import {
 import classes from './Stepper.module.css';
 import { CheckboxCard } from '@/components/Card/CheckboxCard';
 import { BlockScript } from '@/components/BlockScript';
-import { Package } from '@/utils/types/config.type';
+import { Package, Script } from '@/utils/types/config.type';
 
 type StepperProps = {
-  data?: Package[];
+  packages?: Package[];
+  scripts?: Script[];
   type?: 'create' | 'update';
 };
 
@@ -46,7 +47,11 @@ const stepData = {
   ],
 };
 
-export const Stepper = ({ data, type = 'create' }: StepperProps) => {
+export const Stepper = ({
+  packages,
+  scripts,
+  type = 'create',
+}: StepperProps) => {
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
 
@@ -65,7 +70,7 @@ export const Stepper = ({ data, type = 'create' }: StepperProps) => {
   const stepPackages = () => {
     return (
       <Grid>
-        {data?.map((pkg, index) => (
+        {packages?.map((pkg, index) => (
           <GridCol span={4} key={index}>
             <CheckboxCard
               image={pkg.logo}
@@ -79,16 +84,9 @@ export const Stepper = ({ data, type = 'create' }: StepperProps) => {
   };
 
   const stepScript = () =>
-    data?.map(
-      (pkg, index) =>
-        pkg.scripts?.map((value) => (
-          <BlockScript
-            key={index}
-            code={value.script}
-            comment={value.comment}
-          />
-        ))
-    );
+    scripts?.map((script, index) => (
+      <BlockScript key={index} code={script.script} comment={script.comment} />
+    ));
 
   const steps =
     type === 'create'

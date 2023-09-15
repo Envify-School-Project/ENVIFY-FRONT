@@ -1,0 +1,27 @@
+[
+  {
+    "comment": "install react",
+    "script": "sudo apt install react"
+  },
+  {
+    "comment": "install npm",
+    "script": "sudo apt install npm"
+  },
+  {
+    "comment": "install vue",
+    "script": "sudo apt install vue"
+  },
+  {
+    "comment": "install npm",
+    "script": "sudo apt install npm"
+  },
+
+  {
+    "comment": "install angular",
+    "script": "sudo apt install angular"
+  },
+  {
+    "comment": "install npm",
+    "script": "sudo apt install npm"
+  }
+]

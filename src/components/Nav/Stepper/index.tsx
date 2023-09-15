@@ -7,8 +7,8 @@ import {
   TextInput,
   Grid,
   GridCol,
+  Button,
 } from '@mantine/core';
-import { Button } from '@mantine/core';
 import classes from './Stepper.module.css';
 import { CheckboxCard } from '@/components/Card/CheckboxCard';
 import { BlockScript } from '@/components/BlockScript';

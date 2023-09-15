@@ -1,6 +1,6 @@
 import classes from './ConfigCard.module.css';
-import useSliceArrayBy from '@/utils/hooks/useSliceArrayBy';
-import useFormatDateRelative from '@/utils/hooks/useFormatDateRelative';
+import useSliceArrayBy from '@/hooks/useSliceArrayBy';
+import useFormatDateRelative from '@/hooks/useFormatDateRelative';
 import { Avatar, AvatarGroup, Box, Flex, Text } from '@mantine/core';
 import { BsChevronRight } from 'react-icons/bs';
 import type { Config, Package } from '@/utils/types/config.type';

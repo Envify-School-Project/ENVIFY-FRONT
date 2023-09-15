@@ -3,7 +3,7 @@ import { ConfigCard } from '@/components/Card/ConfigCard';
 import { Box, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import { apiClient } from '@/utils/api/apiFactory';
-import useSliceArrayBy from '@/utils/hooks/useSliceArrayBy';
+import useSliceArrayBy from '@/hooks/useSliceArrayBy';
 import type { Config } from '@/utils/types/config.type';
 
 export default async function Dashboard() {

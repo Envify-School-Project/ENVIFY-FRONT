@@ -12,9 +12,10 @@ import { Button } from '@mantine/core';
 import classes from './Stepper.module.css';
 import { CheckboxCard } from '@/components/Card/CheckboxCard';
 import { BlockScript } from '@/components/BlockScript';
+import { Package } from '@/utils/types/config.type';
 
 type StepperProps = {
-  children?: React.JSX.Element;
+  data?: Package[];
   type?: 'create' | 'update';
 };
 
@@ -45,7 +46,7 @@ const stepData = {
   ],
 };
 
-export const Stepper = ({ type = 'create' }: StepperProps) => {
+export const Stepper = ({ data, type = 'create' }: StepperProps) => {
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
 
@@ -64,7 +65,7 @@ export const Stepper = ({ type = 'create' }: StepperProps) => {
   const stepPackages = () => {
     return (
       <Grid>
-        {/* {packages?.map((pkg, index) => (
+        {data?.map((pkg, index) => (
           <GridCol span={4} key={index}>
             <CheckboxCard
               image={pkg.logo}
@@ -72,25 +73,27 @@ export const Stepper = ({ type = 'create' }: StepperProps) => {
               version={pkg.version}
             />
           </GridCol>
-        ))} */}
-        <GridCol span={4}>
-          <CheckboxCard title="Node" />
-        </GridCol>
+        ))}
       </Grid>
     );
   };
 
-  const stepScript = () => {
-    return (
-      <BlockScript
-        // key={script.comment}
-        code="npm run install docker"
-        comment="install docker"
-      />
+  const stepScript = () =>
+    data?.map(
+      (pkg, index) =>
+        pkg.scripts?.map((value) => (
+          <BlockScript
+            key={index}
+            code={value.script}
+            comment={value.comment}
+          />
+        ))
     );
-  };
 
-  const steps = [stepName(), stepPackages(), stepScript()];
+  const steps =
+    type === 'create'
+      ? [stepName(), stepPackages(), stepScript()]
+      : [stepPackages(), stepScript()];
 
   const handleStepChange = (nextStep: number) => {
     const isOutOfBounds = nextStep > 3 || nextStep < 0;

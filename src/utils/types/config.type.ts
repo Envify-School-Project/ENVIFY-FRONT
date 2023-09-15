@@ -1,13 +1,14 @@
+export type Script = {
+  comment: string;
+  script: string;
+};
+
 export type Package = {
   name: string;
   alias: string;
   version?: string | string[];
   logo?: string;
-};
-
-export type Script = {
-  comment: string;
-  script: string;
+  scripts: Script[];
 };
 
 export type Config = {

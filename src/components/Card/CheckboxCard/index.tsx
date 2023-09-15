@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox, Text, Image, Select, Box, Flex } from '@mantine/core';
+import { Checkbox, Text, Select, Box, Flex, Avatar } from '@mantine/core';
 import { useUncontrolled } from '@mantine/hooks';
 import React, { useState } from 'react';
 import classes from './CardCheckBox.module.css';
@@ -43,7 +43,13 @@ export const CheckboxCard = ({
       className={classes.cardCheckBoxContainer}
     >
       <Flex align="center">
-        <Image src={image} alt={title} w="48" mr="xs" />
+        <Avatar
+          className={classes.cardCheckBoxImage}
+          src={image}
+          alt={title}
+          size={48}
+          mr="xs"
+        />
 
         <Box mr="sm">
           <Text c="white">{title}</Text>

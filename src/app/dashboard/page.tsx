@@ -20,7 +20,7 @@ export default async function Dashboard() {
           <Button
             pl={0}
             variant="arrow"
-            href="/dashboard/config/new"
+            href="/dashboard/config/all"
             rightSection={<BsArrowRight />}
           >
             My configurations

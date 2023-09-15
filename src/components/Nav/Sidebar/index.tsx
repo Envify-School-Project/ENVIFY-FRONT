@@ -3,6 +3,14 @@ import classes from './Sidebar.module.css';
 import { AppShellNavbar, Text } from '@mantine/core';
 
 export const Sidebar = () => {
+  const links = [
+    { name: 'My Configs', href: '/dashboard/config/all' },
+    {
+      name: 'Suggested configs',
+      href: '/dashboard/suggested-config/all',
+    },
+  ];
+
   return (
     <AppShellNavbar className={classes.navbar} bg="dark.6" withBorder>
       <Text component={Link} href="/dashboard" c="white" mb={56} px="xs">
@@ -11,15 +19,17 @@ export const Sidebar = () => {
       <Text component="p" c="dark.3" px="xs">
         Configurations
       </Text>
-      {/* TODO: Create all links and make loops */}
-      <Text
-        component={Link}
-        p="xs"
-        href="/dashboard/config/all"
-        className={classes.link}
-      >
-        My configurations
-      </Text>
+      {links.map((link) => (
+        <Text
+          key={link.name}
+          component={Link}
+          p="xs"
+          href={link.href}
+          className={classes.link}
+        >
+          {link.name}
+        </Text>
+      ))}
     </AppShellNavbar>
   );
 };

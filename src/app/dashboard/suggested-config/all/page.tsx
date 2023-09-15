@@ -10,7 +10,7 @@ export default async function ConfigsList() {
   return (
     <>
       <Title order={1} mb="xl">
-        Configurations
+        Suggested and verified configurations
       </Title>
       <Grid>
         {suggestedConfigs.map((config) => (

@@ -1,20 +1,11 @@
 'use client';
 import React, { useState } from 'react';
-import {
-  Stepper as StepperContainer,
-  Flex,
-  ScrollArea,
-  TextInput,
-  Grid,
-  GridCol,
-  Button,
-} from '@mantine/core';
+import { Stepper as StepperContainer, Flex, ScrollArea } from '@mantine/core';
+import { Button } from '@mantine/core';
 import classes from './Stepper.module.css';
-import { CheckboxCard } from '@/components/Card/CheckboxCard';
-import { BlockScript } from '@/components/BlockScript';
 
 type StepperProps = {
-  children?: React.JSX.Element;
+  children: React.ReactNode;
   type?: 'create' | 'update';
 };
 
@@ -45,52 +36,9 @@ const stepData = {
   ],
 };
 
-export const Stepper = ({ type = 'create' }: StepperProps) => {
+export const Stepper = ({ children, type = 'create' }: StepperProps) => {
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
-
-  const stepName = () => {
-    return (
-      <TextInput
-        placeholder="Enter a name"
-        label="Package name"
-        name="name"
-        required={true}
-        // {...form.getInputProps('email')}
-      />
-    );
-  };
-
-  const stepPackages = () => {
-    return (
-      <Grid>
-        {/* {packages?.map((pkg, index) => (
-          <GridCol span={4} key={index}>
-            <CheckboxCard
-              image={pkg.logo}
-              title={pkg.name}
-              version={pkg.version}
-            />
-          </GridCol>
-        ))} */}
-        <GridCol span={4}>
-          <CheckboxCard title="Node" />
-        </GridCol>
-      </Grid>
-    );
-  };
-
-  const stepScript = () => {
-    return (
-      <BlockScript
-        // key={script.comment}
-        code="npm run install docker"
-        comment="install docker"
-      />
-    );
-  };
-
-  const steps = [stepName(), stepPackages(), stepScript()];
 
   const handleStepChange = (nextStep: number) => {
     const isOutOfBounds = nextStep > 3 || nextStep < 0;
@@ -128,20 +76,20 @@ export const Stepper = ({ type = 'create' }: StepperProps) => {
               description={step.description}
               allowStepSelect={shouldAllowSelectStep(index)}
               c="white"
-            >
-              <ScrollArea
-                classNames={{
-                  root: classes.scrollArea,
-                }}
-              >
-                {steps[index]}
-              </ScrollArea>
-            </StepperContainer.Step>
+            />
           ))}
           <StepperContainer.Completed>
             Completed, click back button to get to previous step
           </StepperContainer.Completed>
         </StepperContainer>
+
+        <ScrollArea
+          classNames={{
+            root: classes.scrollArea,
+          }}
+        >
+          {children}
+        </ScrollArea>
 
         <Flex justify="flex-end" gap="md" p="center" py="xl">
           <Button

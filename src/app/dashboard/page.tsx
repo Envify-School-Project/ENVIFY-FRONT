@@ -1,32 +1,36 @@
+import useSliceArrayBy from '@/hooks/useSliceArrayBy';
 import { Button } from '@/components/Button';
 import { ConfigCard } from '@/components/Card/ConfigCard';
 import { Box, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import { apiClient } from '@/utils/api/apiFactory';
-import useSliceArrayBy from '@/utils/hooks/useSliceArrayBy';
 import type { Config } from '@/utils/types/config.type';
 
 export default async function Dashboard() {
   const userConfigs: Config[] = await apiClient.get('/configs.json');
-  const arrayOf3Configs = useSliceArrayBy<Config>(3)(userConfigs);
+  const suggestedConfigs: Config[] = await apiClient.get(
+    '/suggested_configs.json'
+  );
+  const slicedConfigs = useSliceArrayBy<Config>(3)(userConfigs);
+  const slicedSuggestedConfigs = useSliceArrayBy<Config>(3)(suggestedConfigs);
 
   return (
     <>
       <Button mt="xl" href="/dashboard/config/create">
         Create new config
       </Button>
-      {arrayOf3Configs.length > 0 ? (
+      {slicedConfigs.length > 0 ? (
         <Box mt={36}>
           <Button
             pl={0}
             variant="arrow"
-            href="/dashboard/config/new"
+            href="/dashboard/config/all"
             rightSection={<BsArrowRight />}
           >
             My configurations
           </Button>
           <Grid>
-            {arrayOf3Configs?.map((config, i) => (
+            {slicedConfigs?.map((config, i) => (
               <GridCol span={4} key={i}>
                 <ConfigCard config={config} />
               </GridCol>
@@ -35,6 +39,26 @@ export default async function Dashboard() {
         </Box>
       ) : (
         <p>You have no configurations yet.</p>
+      )}
+
+      {slicedSuggestedConfigs.length > 0 && (
+        <Box mt={36}>
+          <Button
+            pl={0}
+            variant="arrow"
+            href="/dashboard/suggested-config/all"
+            rightSection={<BsArrowRight />}
+          >
+            Suggested configurations
+          </Button>
+          <Grid>
+            {slicedSuggestedConfigs?.map((config, i) => (
+              <GridCol span={4} key={i}>
+                <ConfigCard config={config} type="suggested" />
+              </GridCol>
+            ))}
+          </Grid>
+        </Box>
       )}
     </>
   );

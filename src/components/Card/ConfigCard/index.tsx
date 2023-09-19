@@ -1,17 +1,27 @@
 import classes from './ConfigCard.module.css';
-import useSliceArrayBy from '@/utils/hooks/useSliceArrayBy';
-import useFormatDateRelative from '@/utils/hooks/useFormatDateRelative';
+import useSliceArrayBy from '@/hooks/useSliceArrayBy';
+import useFormatDateRelative from '@/hooks/useFormatDateRelative';
 import { Avatar, AvatarGroup, Box, Flex, Text } from '@mantine/core';
 import { BsChevronRight } from 'react-icons/bs';
 import type { Config, Package } from '@/utils/types/config.type';
 import Link from 'next/link';
 
-export const ConfigCard = ({ config }: { config: Config }) => {
-  const arrayOf3Packages = useSliceArrayBy<Package>(3)(config?.packages);
+export const ConfigCard = ({
+  config,
+  type = 'user',
+}: {
+  config: Config;
+  type?: string;
+}) => {
+  const slicedPackages = useSliceArrayBy<Package>(3)(config?.packages);
   const formattedCreatedAt = useFormatDateRelative(config?.created_at);
 
   return (
-    <Link href={`/dashboard/config/${config.id}`}>
+    <Link
+      href={`/dashboard/${
+        type === 'suggested' ? 'suggested-config' : 'config'
+      }/${config.id}`}
+    >
       <Box className={`${classes.configCard} h-100`} p="md">
         <Flex justify="space-between">
           <Text component="p">{config.name}</Text>
@@ -19,7 +29,7 @@ export const ConfigCard = ({ config }: { config: Config }) => {
         </Flex>
         <Box>
           <AvatarGroup my="lg">
-            {arrayOf3Packages
+            {slicedPackages
               ?.slice(0, 3)
               .map((pkg: Package, i) => (
                 <Avatar
@@ -42,7 +52,7 @@ export const ConfigCard = ({ config }: { config: Config }) => {
         </Box>
         <Flex justify="space-between">
           <Box>
-            {arrayOf3Packages?.map((pkg: Package, i) => (
+            {slicedPackages?.map((pkg: Package, i) => (
               <Text size="xs" key={i} component="p">
                 {pkg.name} {pkg.version && `- ${pkg.version}`}
               </Text>

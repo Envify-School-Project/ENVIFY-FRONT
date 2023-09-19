@@ -4,47 +4,22 @@ import {
   Stepper as StepperContainer,
   Flex,
   ScrollArea,
-  TextInput,
+  Button,
   Grid,
   GridCol,
-  Button,
+  TextInput,
 } from '@mantine/core';
 import classes from './Stepper.module.css';
-import { CheckboxCard } from '@/components/Card/CheckboxCard';
-import { BlockScript } from '@/components/BlockScript';
 import { Package, Script } from '@/utils/types/config.type';
+import { BlockScript } from '@/components/BlockScript';
+import { CheckboxCard } from '@/components/Card/CheckboxCard';
+import { stepData } from './Stepper.data';
+import { useForm } from '@mantine/form';
 
 type StepperProps = {
   packages?: Package[];
   scripts?: Script[];
   type?: 'create' | 'update';
-};
-
-const stepData = {
-  create: [
-    {
-      label: 'Choose a config name',
-      description: 'To save and identify it',
-    },
-    {
-      label: 'Select your modules',
-      description: 'Container, packages, db... ',
-    },
-    {
-      label: 'Generate your scripts',
-      description: 'Copy, paste in your VM and tada',
-    },
-  ],
-  update: [
-    {
-      label: 'Remove or add modules',
-      description: 'Container, packages, db...',
-    },
-    {
-      label: 'Regenerate your scripts',
-      description: 'Copy, paste in your VM and tada',
-    },
-  ],
 };
 
 export const Stepper = ({
@@ -53,6 +28,12 @@ export const Stepper = ({
   type = 'create',
 }: StepperProps) => {
   const [active, setActive] = useState(0);
+  const form = useForm<any>({
+    initialValues: {
+      name: '',
+      modules: [],
+    },
+  });
   const [highestStepVisited, setHighestStepVisited] = useState(active);
 
   const stepName = () => {
@@ -62,12 +43,12 @@ export const Stepper = ({
         label="Package name"
         name="name"
         required={true}
-        // {...form.getInputProps('email')}
+        {...form.getInputProps('name')}
       />
     );
   };
 
-  const stepPackages = () => {
+  const stepPackages = (packages?: Package[]) => {
     return (
       <Grid>
         {packages?.map((pkg, index) => (
@@ -76,6 +57,7 @@ export const Stepper = ({
               image={pkg.logo}
               title={pkg.name}
               version={pkg.version}
+              {...form.getTransformedValues('modules')}
             />
           </GridCol>
         ))}
@@ -83,15 +65,15 @@ export const Stepper = ({
     );
   };
 
-  const stepScript = () =>
+  const stepScript = (scripts?: Script[]) =>
     scripts?.map((script, index) => (
       <BlockScript key={index} code={script.script} comment={script.comment} />
     ));
 
   const steps =
     type === 'create'
-      ? [stepName(), stepPackages(), stepScript()]
-      : [stepPackages(), stepScript()];
+      ? [stepName(), stepPackages(packages), stepScript(scripts)]
+      : [stepPackages(packages), stepScript(scripts)];
 
   const handleStepChange = (nextStep: number) => {
     const isOutOfBounds = nextStep > 3 || nextStep < 0;
@@ -106,6 +88,10 @@ export const Stepper = ({
 
   const shouldAllowSelectStep = (step: number) =>
     highestStepVisited >= step && active !== step;
+
+  // const onSubmit = (value: any) => {
+  //   console.log(value);
+  // };
 
   return (
     <>
@@ -135,13 +121,18 @@ export const Stepper = ({
                   root: classes.scrollArea,
                 }}
               >
-                {steps[index]}
+                <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                  {steps[index]}
+                  <Button
+                    type="submit"
+                    onClick={() => handleStepChange(active + 1)}
+                  >
+                    Get your script
+                  </Button>
+                </form>
               </ScrollArea>
             </StepperContainer.Step>
           ))}
-          <StepperContainer.Completed>
-            Completed, click back button to get to previous step
-          </StepperContainer.Completed>
         </StepperContainer>
 
         <Flex justify="flex-end" gap="md" p="center" py="xl">
@@ -151,9 +142,14 @@ export const Stepper = ({
           >
             Back
           </Button>
-          <Button variant="filled" onClick={() => handleStepChange(active + 1)}>
-            Next step
-          </Button>
+          {active === 1 ? null : (
+            <Button
+              variant="filled"
+              onClick={() => handleStepChange(active + 1)}
+            >
+              Next step
+            </Button>
+          )}
         </Flex>
       </Flex>
     </>

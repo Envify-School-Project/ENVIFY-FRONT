@@ -89,10 +89,6 @@ export const Stepper = ({
   const shouldAllowSelectStep = (step: number) =>
     highestStepVisited >= step && active !== step;
 
-  // const onSubmit = (value: any) => {
-  //   console.log(value);
-  // };
-
   return (
     <>
       <Flex direction="column" gap="lg" className={classes.wrapper}>

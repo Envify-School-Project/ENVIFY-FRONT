@@ -6,9 +6,7 @@ const meta: Meta<typeof TextInput | typeof PasswordInput> = {
   title: 'components/Input',
   component: [TextInput, PasswordInput],
   tags: ['autodocs'],
-  args: {
-    children: '',
-  },
+  args: {},
   parameters: {
     docs: {
       toc: true, // 👈 Enables the table of contents

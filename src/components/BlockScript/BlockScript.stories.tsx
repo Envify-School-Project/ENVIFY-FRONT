@@ -6,9 +6,7 @@ const meta: Meta<typeof BlockScript> = {
   title: 'components/BlockScript',
   component: BlockScript,
   tags: ['autodocs'],
-  args: {
-    children: '',
-  },
+  args: {},
   parameters: {
     docs: {
       toc: true, // 👈 Enables the table of contents

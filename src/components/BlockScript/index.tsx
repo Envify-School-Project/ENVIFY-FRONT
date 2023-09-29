@@ -18,7 +18,7 @@ export const BlockScript = ({ comment, code }: BlockScriptProps) => {
       p="md"
       mb="md"
     >
-      <Text size="md" component="p">
+      <Text size="md" component="p" pr="xl">
         {comment}
       </Text>
       <Code

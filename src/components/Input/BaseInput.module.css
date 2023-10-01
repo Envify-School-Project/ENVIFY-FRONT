@@ -25,6 +25,14 @@
     -webkit-text-fill-color: var(--mantine-color-white);
     -webkit-box-shadow: 0 0 0px 1000px var(--mantine-color-dark-4) inset;
   }
+
+  &[type='checkbox'] {
+    height: rem(20px);
+    border: 2px solid var(--mantine-color-violet-3);
+    &:checked {
+      background-color: var(--mantine-color-violet-4);
+    }
+  }
 }
 .innerInput {
   height: rem(40px);

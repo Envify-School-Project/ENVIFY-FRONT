@@ -1,4 +1,4 @@
-.mantine-Stepper-stepIcon {
+.stepIcon {
   background-color: transparent;
   border: 2px solid white;
   color: white;
@@ -10,22 +10,11 @@
     border-color: var(--mantine-color-violet-4);
   }
 }
-.stepperSeparator {
+
+.separator {
   background-color: var(--mantine-color-dark-7);
   &[data-active='true'] {
     background-color: var(--mantine-color-violet-3);
-  }
-}
-.stepperBtn {
-  color: var(--mantine-color-white);
-
-  &[data-completed='true'] {
-    border: 2px solid var(--mantine-color-violet-3);
-    background-color: var(--mantine-color-violet-7);
-  }
-
-  &[data-progress='true'] {
-    border: 2px solid var(--mantine-color-violet-3);
   }
 }
 

@@ -1,10 +1,10 @@
 import type { StoryObj, Meta } from '@storybook/react';
-import { TextInput, PasswordInput } from '@mantine/core';
+import { PasswordInput } from '@mantine/core';
 import React from 'react';
 
-const meta: Meta<typeof TextInput | typeof PasswordInput> = {
-  title: 'components/Input',
-  component: [TextInput, PasswordInput],
+const meta: Meta<typeof PasswordInput> = {
+  title: 'components/PasswordInput',
+  component: PasswordInput,
   tags: ['autodocs'],
   args: {},
   parameters: {
@@ -15,39 +15,33 @@ const meta: Meta<typeof TextInput | typeof PasswordInput> = {
   argTypes: {
     placeholder: {
       control: { type: 'string' },
-      description: `Text inside the field. ${(<br />)} Type : string`,
+      description: `Text inside the field. Type : string`,
     },
     label: {
       control: { type: 'string' },
-      description: `Text above the field. ${(<br />)} Type : string`,
+      description: `Text above the field. Type : string`,
     },
     name: {
       control: { type: 'string' },
-      description: `Name value for the field. ${(<br />)} Type : string`,
+      description: `Name value for the field. Type : string`,
     },
     required: {
       control: { type: 'string' },
-      description: `Input is required ?. ${(<br />)} Type : Boolean`,
+      description: `Input is required ?. Type : Boolean`,
     },
     disabled: {
       control: { type: 'string' },
-      description: `Input is disabled ?. ${(<br />)} Type : Boolean`,
+      description: `Input is disabled ?. Type : Boolean`,
     },
   },
   decorators: [(Story) => <Story />],
 };
 export default meta;
-type Story = StoryObj<typeof TextInput | typeof PasswordInput>;
+type Story = StoryObj<typeof PasswordInput>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: () => (
     <>
-      <TextInput
-        placeholder="Your email"
-        label="Email"
-        name="email"
-        required={false}
-      />
       <PasswordInput
         placeholder="Your password"
         label="Password"
@@ -59,14 +53,8 @@ export const Default: Story = {
 };
 
 export const Required: Story = {
-  render: (args) => (
+  render: () => (
     <>
-      <TextInput
-        placeholder="Your email"
-        label="Email"
-        name="email"
-        required={true}
-      />
       <PasswordInput
         placeholder="Your password"
         label="Password"
@@ -78,15 +66,8 @@ export const Required: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => (
+  render: () => (
     <>
-      <TextInput
-        placeholder="Your email"
-        label="Email"
-        name="email"
-        required={false}
-        disabled={true}
-      />
       <PasswordInput
         placeholder="Your password"
         label="Password"

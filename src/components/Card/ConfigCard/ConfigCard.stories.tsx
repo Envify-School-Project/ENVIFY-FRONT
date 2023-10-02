@@ -31,7 +31,7 @@ export default meta;
 type Story = StoryObj<typeof ConfigCard>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <ConfigCard
         config={{
@@ -75,7 +75,7 @@ export const Default: Story = {
 };
 
 export const WithOnePackage: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <ConfigCard
         config={{

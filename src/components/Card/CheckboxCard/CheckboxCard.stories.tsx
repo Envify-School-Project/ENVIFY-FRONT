@@ -2,7 +2,6 @@ import type { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
 import { CheckboxCard } from '.';
 import { Group } from '@mantine/core';
-import image from '../../../../public/node_img.svg';
 
 const meta: Meta<typeof CheckboxCard> = {
   title: 'components/CheckboxCard',
@@ -37,7 +36,7 @@ export default meta;
 type Story = StoryObj<typeof CheckboxCard>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <CheckboxCard
         title={'Nodejs'}
@@ -49,7 +48,7 @@ export const Default: Story = {
 };
 
 export const WithoutImage: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <CheckboxCard
         title={'Nodejs'}
@@ -61,7 +60,7 @@ export const WithoutImage: Story = {
 };
 
 export const WithoutVersion: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <CheckboxCard
         title={'Nodejs'}

@@ -1,11 +1,18 @@
 import { render, screen } from '../../testing-utils';
 import { BlockScript } from '@/components/BlockScript';
 
-describe('Test Block Script Component', () => {
+describe('Block Script', () => {
+  it('Render component', () => {
+    render(<BlockScript comment="" code="" />);
+  });
+
   it('Render props', () => {
-    render(<BlockScript comment="comment" code="code" />);
-    const comment = screen.getByText('comment');
-    const code = screen.getByText('code');
-    expect(comment).toBeInTheDocument();
+    const { component, getByText } = render(
+      <BlockScript comment="comment" code="code" />
+    );
+
+    expect(getByText('comment')).toBeTruthy();
+    expect(getByText('code')).toBeTruthy();
+    expect(component).toMatchSnapshot();
   });
 });

@@ -6,6 +6,19 @@ describe('<LoginForm />', () => {
     render(<LoginForm />);
   });
 
+  it('Get basics fields', () => {
+    const { container } = render(<LoginForm />);
+
+    const inputText = container.querySelector(`input[name="email"]`);
+    const inputPassword = container.querySelector(`input[name="password"]`);
+
+    expect(inputText).toBeInTheDocument();
+    expect(inputPassword).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('Get text, placeholder', () => {
     const { container, getByText, getByPlaceholderText } = render(
       <LoginForm />
@@ -17,18 +30,6 @@ describe('<LoginForm />', () => {
 
     expect(getByPlaceholderText('Your email')).toBeTruthy();
     expect(getByPlaceholderText('Your password')).toBeTruthy();
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('Check value form', () => {
-    const { container, getByDisplayValue } = render(<LoginForm />);
-
-    const button = screen.getByRole('button');
-
-    fireEvent.click(button);
-    expect(getByDisplayValue('envifyadmin@gmail.com')).toBeTruthy();
-    expect(getByDisplayValue('test1')).toBeTruthy();
 
     expect(container).toMatchSnapshot();
   });

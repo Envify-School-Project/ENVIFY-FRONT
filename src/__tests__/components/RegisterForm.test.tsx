@@ -1,9 +1,32 @@
-import { render } from '../../testing-utils';
+import { render, screen } from '../../testing-utils';
 import { RegisterForm } from '@/components/Form/Register.form';
 
 describe('<RegisterForm />', () => {
   it('Render component', () => {
     render(<RegisterForm />);
+  });
+
+  it('Get basics fields', () => {
+    const { container } = render(<RegisterForm />);
+
+    const inputUserName = container.querySelector(`input[name="username"]`);
+    const inputFirstName = container.querySelector(`input[name="firstname"]`);
+    const inputLastName = container.querySelector(`input[name="lastname"]`);
+    const inputEmail = container.querySelector(`input[name="email"]`);
+    const inputPassword = container.querySelector(`input[name="password"]`);
+    const inputConfirmPassword = container.querySelector(
+      `input[name="confirmpassword"]`
+    );
+
+    expect(inputUserName).toBeInTheDocument();
+    expect(inputFirstName).toBeInTheDocument();
+    expect(inputLastName).toBeInTheDocument();
+    expect(inputEmail).toBeInTheDocument();
+    expect(inputPassword).toBeInTheDocument();
+    expect(inputConfirmPassword).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('Get text, placeholder', () => {

@@ -1,8 +1,13 @@
 export type Package = {
   name: string;
+  version: string[];
   alias: string;
-  version?: string | string[];
   logo?: string;
+};
+
+export type PackageInput = {
+  name: string;
+  version: string;
 };
 
 export type Script = {

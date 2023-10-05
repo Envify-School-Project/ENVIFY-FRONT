@@ -1,39 +1,29 @@
 'use client';
-
-import { Checkbox, Text, Image, Select, Box, Flex } from '@mantine/core';
-import { useUncontrolled } from '@mantine/hooks';
+import { Checkbox, Text, Select, Box, Flex, Avatar } from '@mantine/core';
 import React, { useState } from 'react';
 import classes from './CardCheckBox.module.css';
 
 type CardCheckBoxProps = {
-  checked?: boolean;
-  defaultChecked?: boolean;
-  onChange?(checked: boolean): void;
-  image?: string;
   title: string;
-  version?: string[] | string;
+  version: string[];
+  onChange: (configName: string, version: string, checked: boolean) => void;
+  image?: string;
+  defaultChecked?: boolean;
 };
 
-export const CheckboxCard = ({
-  checked,
-  defaultChecked,
-  onChange,
-  image,
-  title,
-  version,
-}: CardCheckBoxProps) => {
-  const [value, handleChange] = useUncontrolled({
-    value: checked,
-    defaultValue: defaultChecked,
-    finalValue: false,
-    onChange,
-  });
+export const CheckboxCard = (props: CardCheckBoxProps) => {
+  const [selectedVersion, setSelectedVersion] = useState(props.version[0]);
+  const [packageChecked, setPackageChecked] = useState(false);
 
-  const [selectValue, setSelectValue] = useState('');
+  const handelPackageCheked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = event.currentTarget.checked;
+    setPackageChecked(isChecked);
+    props.onChange(props.title, selectedVersion, isChecked);
+  };
 
-  const handleValue = (value: string) => {
-    setSelectValue(value);
-    console.log(selectValue);
+  const handleVersion = (versionValue: string) => {
+    setSelectedVersion(versionValue);
+    props.onChange(props.title, versionValue, packageChecked);
   };
 
   return (
@@ -42,35 +32,20 @@ export const CheckboxCard = ({
       justify="space-between"
       className={classes.cardCheckBoxContainer}
     >
-      <Flex align="center">
-        <Image src={image} alt={title} w="48" mr="xs" />
-
-        <Box mr="sm">
-          <Text c="white">{title}</Text>
-          {version instanceof Array ? (
-            <Select
-              data={version}
-              placeholder={version && version[0]}
-              classNames={{
-                dropdown: classes.cardCheckBoxDropdown,
-                input: classes.cardCheckBoxInput,
-                option: classes.cardCheckBoxOption,
-              }}
-              onChange={handleValue}
-            />
-          ) : (
-            <Text c="white">{version}</Text>
-          )}
+      <Flex align="center" gap="sm">
+        <Flex display="flex" align="center" justify="center">
+          <Avatar src={props.image} alt={props.title} size={48} />
+        </Flex>
+        <Box>
+          <Text c="white">{props.title}</Text>
+          <Select
+            data={props.version}
+            placeholder={selectedVersion}
+            onChange={handleVersion}
+          />
         </Box>
       </Flex>
-
-      <Checkbox
-        classNames={{
-          input: classes.cardCheckBoxBtn,
-        }}
-        onClick={() => handleChange(!value)}
-        tabIndex={-1}
-      />
+      <Checkbox onChange={handelPackageCheked} tabIndex={-1} />
     </Flex>
   );
 };

@@ -1,7 +1,8 @@
 import { CSSVariablesResolver, createTheme, rem } from '@mantine/core';
 import { buttonStyle } from '../Button/Button.style';
 import { baseInputStyle } from '../Input/BaseInput.style';
-import { stepperStyle } from '../Nav/Stepper/Stepper.style';
+import { stepperStyle } from '../Stepper/Stepper.style';
+import { selectStyle } from '../Select/Select.style';
 
 export const mantineTheme = createTheme({
   defaultRadius: 5,
@@ -29,6 +30,8 @@ export const mantineTheme = createTheme({
     Button: buttonStyle,
     TextInput: baseInputStyle,
     PasswordInput: baseInputStyle,
+    Checkbox: baseInputStyle,
+    Select: selectStyle,
     Stepper: stepperStyle,
   },
   other: {

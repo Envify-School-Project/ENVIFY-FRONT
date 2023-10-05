@@ -2,7 +2,6 @@ import type { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
 import { ConfigCard } from '.';
 import { Group } from '@mantine/core';
-import image from '../../../../public/node_img.svg';
 
 const meta: Meta<typeof ConfigCard> = {
   title: 'components/ConfigCard',
@@ -42,19 +41,19 @@ export const Default: Story = {
             {
               name: 'Node',
               alias: 'node',
-              version: '18.0.0',
+              version: ['18.0.0'],
               logo: 'https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png',
             },
             {
               name: 'Docker',
               alias: 'docker',
-              version: '23.0.3',
+              version: ['23.0.3'],
               logo: 'https://cdn.iconscout.com/icon/free/png-256/docker-226091.png',
             },
             {
               name: 'Maria DB',
               alias: 'mariadb',
-              version: '8.0.0',
+              version: ['8.0.0'],
               logo: 'https://cdn.iconscout.com/icon/free/png-256/mariadb-226029.png',
             },
           ],
@@ -86,7 +85,7 @@ export const WithOnePackage: Story = {
             {
               name: 'Node',
               alias: 'node',
-              version: '18.0.0',
+              version: ['18.0.0'],
               logo: 'https://cdn.iconscout.com/icon/free/png-256/node-js-1174925.png',
             },
           ],

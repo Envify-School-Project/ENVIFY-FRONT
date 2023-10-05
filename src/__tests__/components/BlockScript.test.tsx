@@ -16,4 +16,16 @@ describe('<BlockScript />', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it('Get basics fields', () => {
+    const { container } = render(<BlockScript comment="comment" code="code" />);
+
+    const paragraph = container.querySelector(`p`);
+    const code = container.querySelector(`code`);
+
+    expect(paragraph).toBeInTheDocument();
+    expect(code).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
+  });
 });

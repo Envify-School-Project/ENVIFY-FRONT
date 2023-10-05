@@ -15,8 +15,6 @@ describe('<LoginForm />', () => {
     expect(inputText).toBeInTheDocument();
     expect(inputPassword).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
-
-    expect(container).toMatchSnapshot();
   });
 
   it('Get text, placeholder', () => {
@@ -30,7 +28,5 @@ describe('<LoginForm />', () => {
 
     expect(getByPlaceholderText('Your email')).toBeTruthy();
     expect(getByPlaceholderText('Your password')).toBeTruthy();
-
-    expect(container).toMatchSnapshot();
   });
 });

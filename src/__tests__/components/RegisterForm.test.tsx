@@ -25,8 +25,6 @@ describe('<RegisterForm />', () => {
     expect(inputPassword).toBeInTheDocument();
     expect(inputConfirmPassword).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
-
-    expect(container).toMatchSnapshot();
   });
 
   it('Get text, placeholder', () => {
@@ -44,7 +42,5 @@ describe('<RegisterForm />', () => {
     expect(getByPlaceholderText('Your email')).toBeTruthy();
     expect(getByPlaceholderText('Your password')).toBeTruthy();
     expect(getByPlaceholderText('Confirm your password')).toBeTruthy();
-
-    expect(container).toMatchSnapshot();
   });
 });

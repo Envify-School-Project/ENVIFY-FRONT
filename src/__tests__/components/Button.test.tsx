@@ -6,6 +6,14 @@ describe('<Button />', () => {
     render(<Button />);
   });
 
+  it('Get basics fields', () => {
+    const { container } = render(<Button>Click</Button>);
+
+    expect(screen.getByRole('button')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('Disabled button', () => {
     const { container } = render(<Button disabled>Click</Button>);
     const button = screen.getByRole('button');

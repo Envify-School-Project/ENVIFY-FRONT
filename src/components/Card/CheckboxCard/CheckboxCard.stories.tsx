@@ -4,7 +4,7 @@ import { CheckboxCard } from '.';
 import { Group } from '@mantine/core';
 
 const meta: Meta<typeof CheckboxCard> = {
-  title: 'components/CheckboxCard',
+  title: 'components/Cards/CheckboxCard',
   component: CheckboxCard,
   tags: ['autodocs'],
   args: {},
@@ -42,6 +42,13 @@ export const Default: Story = {
         title={'Nodejs'}
         image={'https://nodejs.org/static/images/logo.svg'}
         version={['10.0', '11.0', '12.0']}
+        onChange={function (
+          configName: string,
+          version: string,
+          checked: boolean
+        ): void {
+          throw new Error('Function not implemented.');
+        }}
       />
     </>
   ),
@@ -54,6 +61,13 @@ export const WithoutImage: Story = {
         title={'Nodejs'}
         image={''}
         version={['10.0', '11.0', '12.0']}
+        onChange={function (
+          configName: string,
+          version: string,
+          checked: boolean
+        ): void {
+          throw new Error('Function not implemented.');
+        }}
       />
     </>
   ),
@@ -65,6 +79,14 @@ export const WithoutVersion: Story = {
       <CheckboxCard
         title={'Nodejs'}
         image={'https://nodejs.org/static/images/logo.svg'}
+        version={[]}
+        onChange={function (
+          configName: string,
+          version: string,
+          checked: boolean
+        ): void {
+          throw new Error('Function not implemented.');
+        }}
       />
     </>
   ),

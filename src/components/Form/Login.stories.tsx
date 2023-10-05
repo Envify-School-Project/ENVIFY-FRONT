@@ -4,7 +4,7 @@ import { Group } from '@mantine/core';
 import { LoginForm } from './Login.form';
 
 const meta: Meta<typeof LoginForm> = {
-  title: 'components/LoginForm',
+  title: 'components/Forms/LoginForm',
   component: LoginForm,
   tags: ['autodocs'],
   args: {},

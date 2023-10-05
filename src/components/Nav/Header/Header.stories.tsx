@@ -4,7 +4,7 @@ import { Header } from '.';
 import { Group } from '@mantine/core';
 
 const meta: Meta<typeof Header> = {
-  title: 'components/Header',
+  title: 'components/Navs/Header',
   component: Header,
   tags: ['autodocs'],
   args: {},

@@ -4,7 +4,7 @@ import { ConfigCard } from '.';
 import { Group } from '@mantine/core';
 
 const meta: Meta<typeof ConfigCard> = {
-  title: 'components/ConfigCard',
+  title: 'components/Cards/ConfigCard',
   component: ConfigCard,
   tags: ['autodocs'],
   args: {},

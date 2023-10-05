@@ -4,7 +4,7 @@ import React from 'react';
 import { Group } from '@mantine/core';
 
 const meta: Meta<typeof RegisterForm> = {
-  title: 'components/RegisterForm',
+  title: 'components/Forms/RegisterForm',
   component: RegisterForm,
   tags: ['autodocs'],
   args: {},

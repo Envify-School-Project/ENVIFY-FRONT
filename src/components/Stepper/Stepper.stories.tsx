@@ -13,7 +13,7 @@ import {
 } from '@/app/dashboard/config/create/configForm.context';
 
 const meta: Meta<typeof StepperFormProvider> = {
-  title: 'components/Form/StepperForm',
+  title: 'components/Forms/StepperForm',
   component: StepperFormProvider,
   tags: ['autodocs'],
   parameters: {

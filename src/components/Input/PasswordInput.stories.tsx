@@ -3,7 +3,7 @@ import { PasswordInput } from '@mantine/core';
 import React from 'react';
 
 const meta: Meta<typeof PasswordInput> = {
-  title: 'components/PasswordInput',
+  title: 'components/Inputs/PasswordInput',
   component: PasswordInput,
   tags: ['autodocs'],
   args: {},

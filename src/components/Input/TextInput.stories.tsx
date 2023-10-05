@@ -3,7 +3,7 @@ import { TextInput } from '@mantine/core';
 import React from 'react';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'components/TextInput',
+  title: 'components/Inputs/TextInput',
   component: TextInput,
   tags: ['autodocs'],
   args: {},

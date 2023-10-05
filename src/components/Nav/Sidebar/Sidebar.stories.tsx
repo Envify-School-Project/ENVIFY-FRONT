@@ -4,7 +4,7 @@ import { Sidebar } from '.';
 import { AppShell, Group } from '@mantine/core';
 
 const meta: Meta<typeof Sidebar> = {
-  title: 'components/Sidebar',
+  title: 'components/Navs/Sidebar',
   component: Sidebar,
   tags: ['autodocs'],
   args: {},

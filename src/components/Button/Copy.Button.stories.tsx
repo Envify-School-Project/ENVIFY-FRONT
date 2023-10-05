@@ -4,7 +4,7 @@ import { Group } from '@mantine/core';
 import React from 'react';
 
 const meta: Meta<typeof ButtonCopy> = {
-  title: 'components/ButtonCopy',
+  title: 'components/Buttons/ButtonCopy',
   component: ButtonCopy,
   tags: ['autodocs'],
   args: {},

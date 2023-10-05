@@ -5,7 +5,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import React from 'react';
 
 const meta: Meta<typeof Button> = {
-  title: 'components/Button',
+  title: 'components/Buttons/Button',
   component: Button,
   tags: ['autodocs'],
   args: {

@@ -20,7 +20,6 @@ const apiFactory = (baseUrl: string) => ({
         ...options,
         headers: {
           ...options.headers,
-          'Content-Type': 'application/json',
           'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
         },
       });
@@ -45,7 +44,6 @@ const apiFactory = (baseUrl: string) => ({
         body: JSON.stringify(data),
         headers: {
           ...options.headers,
-          'Content-Type': 'application/json',
           'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
         },
       });

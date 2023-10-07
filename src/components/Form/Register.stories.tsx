@@ -1,12 +1,11 @@
 import type { StoryObj, Meta } from '@storybook/react';
 import { RegisterForm } from './Register.form';
-import { LoginForm } from './Login.form';
 import React from 'react';
 import { Group } from '@mantine/core';
 
-const meta: Meta<typeof RegisterForm | typeof LoginForm> = {
-  title: 'components/Form',
-  component: [RegisterForm, LoginForm],
+const meta: Meta<typeof RegisterForm> = {
+  title: 'components/Forms/RegisterForm',
+  component: RegisterForm,
   tags: ['autodocs'],
   args: {},
   parameters: {
@@ -24,20 +23,12 @@ const meta: Meta<typeof RegisterForm | typeof LoginForm> = {
   ],
 };
 export default meta;
-type Story = StoryObj<typeof RegisterForm | typeof LoginForm>;
+type Story = StoryObj<typeof RegisterForm>;
 
 export const DefaultRegister: Story = {
-  render: (args) => (
+  render: () => (
     <>
       <RegisterForm />
-    </>
-  ),
-};
-
-export const DefaultLogin: Story = {
-  render: (args) => (
-    <>
-      <LoginForm />
     </>
   ),
 };

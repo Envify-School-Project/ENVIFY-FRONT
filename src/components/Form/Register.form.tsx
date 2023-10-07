@@ -72,6 +72,7 @@ export const RegisterForm = () => {
           <TextInput
             placeholder="Your username"
             label="Username"
+            name="username"
             required={true}
             {...form.getInputProps('username')}
           />
@@ -80,12 +81,14 @@ export const RegisterForm = () => {
           <TextInput
             placeholder="Your first name"
             label="First name"
+            name="firstname"
             required={true}
             {...form.getInputProps('firstname')}
           />
           <TextInput
             placeholder="Your last name"
             label="Last name"
+            name="lastname"
             required={true}
             {...form.getInputProps('lastname')}
           />
@@ -94,6 +97,7 @@ export const RegisterForm = () => {
           <TextInput
             placeholder="Your email"
             label="Email"
+            name="email"
             required={true}
             {...form.getInputProps('email')}
           />
@@ -102,6 +106,7 @@ export const RegisterForm = () => {
           <PasswordInput
             placeholder="Your password"
             label="Password"
+            name="password"
             required={true}
             {...form.getInputProps('password')}
           />
@@ -109,6 +114,7 @@ export const RegisterForm = () => {
         <PasswordInput
           placeholder="Confirm your password"
           label="Confirm your password"
+          name="confirmpassword"
           required={true}
           {...form.getInputProps('confirmPassword')}
         />

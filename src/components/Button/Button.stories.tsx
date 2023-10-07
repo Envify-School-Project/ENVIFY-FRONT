@@ -1,13 +1,12 @@
 import type { StoryObj, Meta } from '@storybook/react';
 import { Button } from '.';
-import { ButtonCopy } from './Copy.Button';
 import { Group } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import React from 'react';
 
-const meta: Meta<typeof Button | typeof ButtonCopy> = {
-  title: 'components/Button',
-  component: [Button, ButtonCopy],
+const meta: Meta<typeof Button> = {
+  title: 'components/Buttons/Button',
+  component: Button,
   tags: ['autodocs'],
   args: {
     children: 'Button',
@@ -20,19 +19,15 @@ const meta: Meta<typeof Button | typeof ButtonCopy> = {
   argTypes: {
     variant: {
       control: { type: 'string' }, // Automatically inferred when 'options' is defined
-      description: `Type of button. ${(<br />)} Type : string`,
+      description: `Type of button. Type : string`,
     },
     href: {
       control: { type: 'string' }, // Automatically inferred when 'options' is defined
-      description: `Link of button. ${(<br />)} Type : string`,
-    },
-    required: {
-      control: { type: 'string' },
-      description: `Button is required ?. ${(<br />)} Type : Boolean`,
+      description: `Link of button. Type : string`,
     },
     disabled: {
-      control: { type: 'string' },
-      description: `Button is disabled ?. ${(<br />)} Type : Boolean`,
+      control: { type: 'boolean' },
+      description: `Button is disabled ?. Type : Boolean`,
     },
   },
   decorators: [
@@ -52,7 +47,6 @@ export const Default: Story = {
       <Button {...args} />
       <Button variant="outline" {...args} />
       <Button variant="arrow" rightSection={<BsArrowRight />} {...args} />
-      <ButtonCopy value={'value'} />
     </>
   ),
 };

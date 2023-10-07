@@ -28,9 +28,7 @@ describe('<RegisterForm />', () => {
   });
 
   it('Get text, placeholder', () => {
-    const { container, getByText, getByPlaceholderText } = render(
-      <RegisterForm />
-    );
+    const { getByText, getByPlaceholderText } = render(<RegisterForm />);
 
     expect(getByText('Get Started')).toBeTruthy();
     expect(getByText('Create a new account')).toBeTruthy();

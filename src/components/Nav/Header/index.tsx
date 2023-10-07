@@ -13,7 +13,7 @@ export const Header = () => {
       align="center"
       p="md"
       h={80}
-      w='100%'
+      w="100%"
     >
       <ButtonIcon>
         <GiHexagonalNut size={24} />

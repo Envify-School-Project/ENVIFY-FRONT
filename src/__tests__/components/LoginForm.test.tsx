@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '../../testing-utils';
+import { render, screen } from '../../testing-utils';
 import { LoginForm } from '@/components/Form/Login.form';
 
 describe('<LoginForm />', () => {
@@ -18,9 +18,7 @@ describe('<LoginForm />', () => {
   });
 
   it('Get text, placeholder', () => {
-    const { container, getByText, getByPlaceholderText } = render(
-      <LoginForm />
-    );
+    const { getByText, getByPlaceholderText } = render(<LoginForm />);
 
     expect(getByText('Welcome back')).toBeTruthy();
     expect(getByText('Sign in to your account')).toBeTruthy();

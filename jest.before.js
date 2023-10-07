@@ -1,5 +1,6 @@
+// disable ts validation for jet file
+/* eslint-disable no-undef */
 import 'regenerator-runtime';
-
 /** Add any global mocks needed for the test suite here */
 
 Object.defineProperty(window, 'matchMedia', {

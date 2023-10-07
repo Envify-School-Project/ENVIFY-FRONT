@@ -1,4 +1,4 @@
-import { render, screen } from '../../testing-utils';
+import { render } from '../../testing-utils';
 import { TextInput } from '@mantine/core';
 
 describe('<PasswordInput />', () => {
@@ -33,7 +33,7 @@ describe('<PasswordInput />', () => {
   });
 
   it('Get label text, placeholder', () => {
-    const { container, getByText, getByPlaceholderText } = render(
+    const { getByText, getByPlaceholderText } = render(
       <TextInput
         placeholder="Your email"
         label="Email"

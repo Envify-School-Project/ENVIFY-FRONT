@@ -1,11 +1,12 @@
 import { userAuthenticate, userRegister } from '../../utils/api/user.api';
+import fetchMock from 'jest-fetch-mock';
 
 beforeEach(() => {
-  fetch.resetMocks();
+  fetchMock.resetMocks();
 });
 
 it('Return user auth', async () => {
-  fetch.mockResponses([
+  fetchMock.mockResponses([
     JSON.stringify({
       email: 'envifyadmin@gmail.com',
       profil: null,
@@ -36,7 +37,7 @@ it('Return user auth', async () => {
 });
 
 it('Return user register', async () => {
-  fetch.mockResponses([
+  fetchMock.mockResponses([
     JSON.stringify({
       message: 'Utilisateur crée avec succès',
       code: 200,

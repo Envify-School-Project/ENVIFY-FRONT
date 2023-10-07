@@ -21,5 +21,30 @@ export type PackageConfigFilesDto = {
 
 export type PackageInput = {
   name: string;
-  version: string;
+  versionId: number;
+  versionNumber: number;
+  packageProperties: PackageProperties[];
+};
+
+export type PackageProperties = {
+  label: string;
+} & (
+  | PackagePropertiesInput
+  | PackagePropertiesSwitch
+  | PackagePropertiesSelect
+);
+
+type PackagePropertiesInput = {
+  type: 'text';
+  value: string;
+};
+
+type PackagePropertiesSwitch = {
+  type: 'boolean';
+  value: boolean;
+};
+
+type PackagePropertiesSelect = {
+  type: 'select';
+  value: string[];
 };

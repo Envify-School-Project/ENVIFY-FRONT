@@ -1,33 +1,59 @@
 import { userAuthenticate, userRegister } from '../../utils/api/user.api';
-import fetchMock from 'jest-fetch-mock';
 
-fetchMock.enableMocks();
+beforeEach(() => {
+  fetch.resetMocks();
+});
 
-describe('Test jest', () => {
-  it('Return user auth', async () => {
-    const fakeUser = {
-      email: 'test@GiMailShirt.com',
-      password: 'mypassword',
-    };
+it('Return user auth', async () => {
+  fetch.mockResponses([
+    JSON.stringify({
+      email: 'envifyadmin@gmail.com',
+      profil: null,
+    }),
+    { status: 200 },
+  ]);
 
-    const user = await userAuthenticate(fakeUser);
-    console.log(user);
-    const result = JSON.stringify(user);
-    console.log(result);
+  const fakeUser = {
+    email: 'envifyadmin@gmail.com',
+    password: 'test1',
+  };
 
-    // expect(user).toBeTruthy();
+  const userAut = await userAuthenticate(fakeUser);
+
+  expect(userAut).toEqual({
+    email: fakeUser.email,
+    profil: null,
   });
+  expect(fetch).toHaveBeenCalledTimes(1);
+  expect(fetch).toHaveBeenCalledWith(
+    'https://envify-back-4b9590414ea8.herokuapp.com/auth/login',
+    {
+      body: `{"email":"${fakeUser.email}","password":"${fakeUser.password}"}`,
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+    }
+  );
+});
 
-  it('Create user', async () => {
-    const fakeUser = {
-      username: 'username',
-      email: 'test@GiMailShirt.com',
-      password: 'mypassword',
-    };
+it('Return user register', async () => {
+  fetch.mockResponses([
+    JSON.stringify({
+      message: 'Utilisateur crée avec succès',
+      code: 200,
+    }),
+    { status: 200 },
+  ]);
 
-    const user = await userRegister(fakeUser);
-    console.log(user);
+  const fakeUser = {
+    username: 'username',
+    email: 'testiijwtj00@gmail.com',
+    password: 'test1',
+  };
 
-    // expect(user).toBeTruthy();
+  const user = await userRegister(fakeUser);
+
+  expect(user).toEqual({
+    message: 'Utilisateur crée avec succès',
+    code: 200,
   });
 });

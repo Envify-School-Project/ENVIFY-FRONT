@@ -15,28 +15,28 @@ const meta: Meta<typeof BlockScript> = {
   argTypes: {
     comment: {
       control: { type: 'string' },
-      description: `Text for comment bloc. ${(<br />)} Type : string`,
+      description: `Text for comment bloc. Type : string`,
     },
     code: {
       control: { type: 'string' },
-      description: `Script generate. ${(<br />)} Type : string`,
+      description: `Script generate. Type : string`,
     },
   },
   decorators: [(Story) => <Story />],
 };
 export default meta;
-type Story = StoryObj<BlockScript>;
+type Story = StoryObj<typeof BlockScript>;
 
 export const Default: Story = {
-  render: (args) => <BlockScript comment="Nodejs" code="npm instal node" />,
+  render: () => <BlockScript comment="Nodejs" code="npm instal node" />,
 };
 
 export const WithoutComment: Story = {
-  render: (args) => <BlockScript code={'npm instal node'} />,
+  render: () => <BlockScript code={'npm instal node'} />,
 };
 
 export const LongCode: Story = {
-  render: (args) => (
+  render: () => (
     <BlockScript
       comment="Docker"
       code={`$ docker -o ../docker_gh-pages -c atelier-cave.light -s yes -I -u -x node_modules -w --extras fileSearch
@@ -46,7 +46,7 @@ export const LongCode: Story = {
 };
 
 export const LongComment: Story = {
-  render: (args) => (
+  render: () => (
     <BlockScript
       comment="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       code={`$ docker -o ../docker_gh-pages -c atelier-cave.light -s yes -I -u -x node_modules -w --extras fileSearch

@@ -1,11 +1,10 @@
 import type { StoryObj, Meta } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckboxCard } from '.';
-import { Group } from '@mantine/core';
-import image from '../../../../public/node_img.svg';
+import { Group, SimpleGrid } from '@mantine/core';
 
 const meta: Meta<typeof CheckboxCard> = {
-  title: 'components/CheckboxCard',
+  title: 'components/Cards/CheckboxCard',
   component: CheckboxCard,
   tags: ['autodocs'],
   args: {},
@@ -21,52 +20,115 @@ const meta: Meta<typeof CheckboxCard> = {
     version: {
       description: `Different version for one package.`,
     },
+    onChange: {
+      control: {
+        disable: true,
+      },
+    },
     image: {
       description: `Image linked to the package.`,
     },
   },
   decorators: [
-    (Story) => (
-      <Group>
-        <Story />
-      </Group>
-    ),
+    (Story) => {
+      return (
+        <Group>
+          <SimpleGrid>
+            <Story />
+          </SimpleGrid>
+        </Group>
+      );
+    },
   ],
 };
 export default meta;
 type Story = StoryObj<typeof CheckboxCard>;
 
 export const Default: Story = {
-  render: (args) => (
-    <>
-      <CheckboxCard
-        title={'Nodejs'}
-        image={'https://nodejs.org/static/images/logo.svg'}
-        version={['10.0', '11.0', '12.0']}
-      />
-    </>
-  ),
+  render: function Render() {
+    const { value, handleChange } = useCheckboxOnChange();
+
+    return (
+      <>
+        <CheckboxCard
+          title={'Nodejs'}
+          image={'https://nodejs.org/static/images/logo.svg'}
+          version={['10.0', '11.0', '12.0']}
+          onChange={handleChange}
+        />
+
+        <DisplayValue value={value} />
+      </>
+    );
+  },
 };
 
 export const WithoutImage: Story = {
-  render: (args) => (
-    <>
-      <CheckboxCard
-        title={'Nodejs'}
-        image={''}
-        version={['10.0', '11.0', '12.0']}
-      />
-    </>
-  ),
+  render: function Render() {
+    const { value, handleChange } = useCheckboxOnChange();
+
+    return (
+      <>
+        <CheckboxCard
+          title={'Nodejs'}
+          image={''}
+          version={['10.0', '11.0', '12.0']}
+          onChange={handleChange}
+        />
+        <DisplayValue value={value} />
+      </>
+    );
+  },
 };
 
 export const WithoutVersion: Story = {
-  render: (args) => (
-    <>
-      <CheckboxCard
-        title={'Nodejs'}
-        image={'https://nodejs.org/static/images/logo.svg'}
-      />
-    </>
-  ),
+  render: function Render() {
+    const { value, handleChange } = useCheckboxOnChange();
+
+    return (
+      <>
+        <CheckboxCard title={'Nodejs'} version={[]} onChange={handleChange} />
+        <DisplayValue value={value} />
+      </>
+    );
+  },
+};
+
+type CardCheckBoxOnChange = {
+  packageName: string;
+  packageVersion: string;
+  checked: boolean;
+};
+
+const DisplayValue = ({
+  value,
+}: {
+  value: CardCheckBoxOnChange | undefined;
+}) => {
+  return (
+    <pre style={{ marginTop: 10, color: 'black' }}>
+      {JSON.stringify({ value }, null, 2)}
+    </pre>
+  );
+};
+
+const useCheckboxOnChange = () => {
+  const [value, setValue] = useState<CardCheckBoxOnChange | undefined>();
+
+  const handleChange = (
+    packageName: string,
+    packageVersion: string,
+    checked: boolean
+  ) => {
+    setValue({
+      packageName: packageName,
+      packageVersion: packageVersion,
+      checked: checked,
+    });
+  };
+
+  return {
+    value,
+    handleChange,
+  };
 };

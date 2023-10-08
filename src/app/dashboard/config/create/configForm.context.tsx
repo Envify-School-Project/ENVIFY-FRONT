@@ -1,8 +1,11 @@
+'use client';
+import { OperatingSystemInput } from '@/utils/types/operatingSystem.type';
+import { PackageInput } from '@/utils/types/package.type';
 import { createFormContext } from '@mantine/form';
-import { PackageInput } from '@/utils/types/config.type';
 
 export type ConfigContext = {
   configName?: string;
+  operatingSystem: OperatingSystemInput;
   packages: PackageInput[];
 };
 

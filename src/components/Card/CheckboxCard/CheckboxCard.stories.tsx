@@ -17,9 +17,6 @@ const meta: Meta<typeof CheckboxCard> = {
     title: {
       description: `Title of card.`,
     },
-    version: {
-      description: `Different version for one package.`,
-    },
     onChange: {
       control: {
         disable: true,
@@ -51,9 +48,9 @@ export const Default: Story = {
     return (
       <>
         <CheckboxCard
+          packageId={1}
           title={'Nodejs'}
           image={'https://nodejs.org/static/images/logo.svg'}
-          version={['10.0', '11.0', '12.0']}
           onChange={handleChange}
         />
 
@@ -70,9 +67,9 @@ export const WithoutImage: Story = {
     return (
       <>
         <CheckboxCard
+          packageId={1}
           title={'Nodejs'}
           image={''}
-          version={['10.0', '11.0', '12.0']}
           onChange={handleChange}
         />
         <DisplayValue value={value} />
@@ -87,7 +84,7 @@ export const WithoutVersion: Story = {
 
     return (
       <>
-        <CheckboxCard title={'Nodejs'} version={[]} onChange={handleChange} />
+        <CheckboxCard title={'Nodejs'} packageId={1} onChange={handleChange} />
         <DisplayValue value={value} />
       </>
     );
@@ -96,7 +93,7 @@ export const WithoutVersion: Story = {
 
 type CardCheckBoxOnChange = {
   packageName: string;
-  packageVersion: string;
+  packageVersion: string | null;
   checked: boolean;
 };
 
@@ -117,7 +114,7 @@ const useCheckboxOnChange = () => {
 
   const handleChange = (
     packageName: string,
-    packageVersion: string,
+    packageVersion: string | null,
     checked: boolean
   ) => {
     setValue({

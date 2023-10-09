@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Stepper as StepperContainer, StepperProps } from '@mantine/core';
 import { useStepperContext } from './Stepper.provider';

@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/Button';
 import { Group } from '@mantine/core';
 import { useStepperContext } from './Stepper.provider';
@@ -21,7 +22,8 @@ export const StepperButtons = ({
     if (currentStepFields instanceof Array) {
       const errors = currentStepFields.map((field) => form.isValid(field));
 
-      return errors.every((value) => !value);
+      const allTrue = errors.every((value) => value);
+      return !allTrue;
     }
 
     return !form.isValid(currentStepFields);

@@ -14,7 +14,7 @@ import {
   useConfigForm,
 } from './configForm.context';
 
-const formInput: UseFormInput<ConfigContext> = {
+export const configCreateFormInput: UseFormInput<ConfigContext> = {
   initialValues: {
     configName: '',
     operatingSystem: {
@@ -39,7 +39,7 @@ const formInput: UseFormInput<ConfigContext> = {
 export const ConfigCreateStepper = () => {
   return (
     <StepperFormProvider
-      formInput={formInput}
+      formInput={configCreateFormInput}
       FormProvider={ConfigFormProvider}
       useForm={useConfigForm}
     >

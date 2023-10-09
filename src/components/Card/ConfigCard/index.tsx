@@ -20,7 +20,7 @@ export const ConfigCard = ({
     <Link
       href={`/dashboard/${
         type === 'suggested' ? 'suggested-config' : 'config'
-      }/${config.id}`}
+      }/${config?.id}`}
     >
       <Box className={`${classes.configCard} h-100`} p="md">
         <Flex justify="space-between">
@@ -31,9 +31,9 @@ export const ConfigCard = ({
           <AvatarGroup my="lg">
             {slicedPackages
               ?.slice(0, 3)
-              .map((pkg: Package, i) => (
+              .map((pkg: Package) => (
                 <Avatar
-                  key={i}
+                  key={pkg.name}
                   src={pkg.logo}
                   alt={pkg.name}
                   size={48}

@@ -16,7 +16,13 @@ const apiFactory = (baseUrl: string) => ({
     options: RequestInit = {}
   ): Promise<TOutput> => {
     try {
-      const response = await fetch(`${baseUrl}${path}`, options);
+      const response = await fetch(`${baseUrl}${path}`, {
+        ...options,
+        headers: {
+          ...options.headers,
+          'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
+        },
+      });
 
       responseStatusHandler(response.status);
 
@@ -38,7 +44,7 @@ const apiFactory = (baseUrl: string) => ({
         body: JSON.stringify(data),
         headers: {
           ...options.headers,
-          'Content-Type': 'application/json',
+          'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
         },
       });
 
@@ -51,4 +57,7 @@ const apiFactory = (baseUrl: string) => ({
   },
 });
 
-export const apiClient = apiFactory(process.env.NEXT_PUBLIC_API_URL);
+export const apiClient = apiFactory(`${process.env.NEXT_PUBLIC_API_URL}`);
+export const apiAuthClient = apiFactory(
+  `${process.env.NEXT_PUBLIC_AUTH_API_URL}`
+);

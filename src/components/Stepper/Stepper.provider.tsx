@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, createContext, useContext, useState } from 'react';
 import {
   UseForm,

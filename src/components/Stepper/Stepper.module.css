@@ -11,6 +11,10 @@
   }
 }
 
+.steps {
+  margin-bottom: 0.75rem;
+}
+
 .separator {
   background-color: var(--mantine-color-dark-7);
   &[data-active='true'] {

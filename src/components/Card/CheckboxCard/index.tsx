@@ -1,21 +1,26 @@
 'use client';
-import { Checkbox, Text, Select, Box, Flex, Avatar } from '@mantine/core';
+import { Checkbox, Text, Box, Flex, Avatar } from '@mantine/core';
 import React, { useState } from 'react';
 import classes from './CardCheckBox.module.css';
+import { PackageVersionSelect } from '@/components/Select/PackageVersion.select';
 
 type CardCheckBoxProps = {
   title: string;
-  version: string[];
-  onChange: (configName: string, version: string, checked: boolean) => void;
+  packageId: number;
+  onChange: (
+    configName: string,
+    version: string | null,
+    checked: boolean
+  ) => void;
   image?: string;
   defaultChecked?: boolean;
 };
 
 export const CheckboxCard = (props: CardCheckBoxProps) => {
-  const [selectedVersion, setSelectedVersion] = useState(props.version[0]);
+  const [selectedVersion, setSelectedVersion] = useState<string | null>(null);
   const [packageChecked, setPackageChecked] = useState(false);
 
-  const handelPackageCheked = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePackageChecked = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.currentTarget.checked;
     setPackageChecked(isChecked);
     props.onChange(props.title, selectedVersion, isChecked);
@@ -38,14 +43,16 @@ export const CheckboxCard = (props: CardCheckBoxProps) => {
         </Flex>
         <Box>
           <Text c="white">{props.title}</Text>
-          <Select
-            data={props.version}
-            placeholder={selectedVersion}
-            onChange={handleVersion}
-          />
         </Box>
       </Flex>
-      <Checkbox onChange={handelPackageCheked} tabIndex={-1} />
+      <Checkbox onChange={handlePackageChecked} tabIndex={-1} />
+      {packageChecked && (
+        <PackageVersionSelect
+          packageId={props.packageId}
+          selectedVersion={selectedVersion}
+          handleVersion={handleVersion}
+        />
+      )}
     </Flex>
   );
 };

@@ -4,10 +4,10 @@ import {
   UserDto,
   UserLogType,
 } from '../types/user.type';
-import { apiClient } from './apiFactory';
+import { apiAuthClient } from './apiFactory';
 
 export const userAuthenticate = async (data: UserLogType) =>
-  await apiClient.post<UserLogType, UserAuthType>('/auth/login', data);
+  await apiAuthClient.post<UserLogType, UserAuthType>('/login', data);
 
 export const userRegister = async (data: CreateUserDto) =>
-  await apiClient.post<CreateUserDto, UserDto>('/auth/create', data);
+  await apiAuthClient.post<CreateUserDto, UserDto>('/create', data);

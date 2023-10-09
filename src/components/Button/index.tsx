@@ -4,11 +4,10 @@ import {
 } from '@mantine/core';
 import Link from 'next/link';
 
-type ButtonProps = MantineButtonProps &
-  React.ComponentPropsWithoutRef<'button'> & {
-    href?: string;
-    variant?: MantineButtonProps['variant'] | 'arrow';
-  };
+type ButtonProps = MantineButtonProps & {
+  href?: string;
+  variant?: MantineButtonProps['variant'] | 'arrow';
+};
 
 export const Button = ({
   href,
@@ -17,7 +16,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return href ? (
-    <MantineButton component={Link} href={href} variant={variant}>
+    <MantineButton component={Link} href={href} variant={variant} {...props}>
       {children}
     </MantineButton>
   ) : (

@@ -3,22 +3,24 @@ import type { Config } from '@/utils/types/config.type';
 import { Grid, GridCol, Title } from '@mantine/core';
 import { apiClient } from '@/utils/api/apiFactory';
 export default async function ConfigsList() {
-  const suggestedConfigs: Config[] = await apiClient.get(
-    '/suggested_configs.json'
-  );
+  const suggestedConfigs: Config[] = await apiClient.get('/suggested_configs');
 
   return (
     <>
       <Title order={1} mb="xl">
         Suggested and verified configurations
       </Title>
-      <Grid>
-        {suggestedConfigs.map((config) => (
-          <GridCol span={4} key={config.id}>
-            <ConfigCard config={config} type="suggested" />
-          </GridCol>
-        ))}
-      </Grid>
+      {suggestedConfigs?.length > 0 ? (
+        <Grid>
+          {suggestedConfigs?.map((config) => (
+            <GridCol span={4} key={config.id}>
+              <ConfigCard config={config} type="suggested" />
+            </GridCol>
+          ))}
+        </Grid>
+      ) : (
+        <p>There are no suggested configurations yet.</p>
+      )}
     </>
   );
 }

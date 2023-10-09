@@ -1,29 +1,19 @@
 import { PackageInput, PackageProperties } from '@/utils/types/package.type';
-import {
-  Box,
-  Grid,
-  GridCol,
-  Select,
-  Switch,
-  TextInput,
-  Title,
-} from '@mantine/core';
+import { Box, Select, Switch, TextInput, Title } from '@mantine/core';
 import React from 'react';
 
 export const BlockProperties = (packageInput: PackageInput) => {
   return (
-    <Grid>
-      <GridCol>
-        <Title order={2} mb="sm">
-          {packageInput.name}
-        </Title>
-        {packageInput.packageProperties.map((pck, index) => (
-          <Box mb="lg" key={index}>
-            <InputDisplay {...pck} />
-          </Box>
-        ))}
-      </GridCol>
-    </Grid>
+    <Box mb="xl">
+      <Title order={2} mb="sm">
+        {packageInput.name}
+      </Title>
+      {packageInput.packageProperties.map((pck, index) => (
+        <Box mb="sm" key={index}>
+          <InputDisplay {...pck} />
+        </Box>
+      ))}
+    </Box>
   );
 };
 

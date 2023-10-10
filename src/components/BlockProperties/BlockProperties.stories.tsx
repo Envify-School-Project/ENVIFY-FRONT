@@ -54,12 +54,13 @@ type Story = StoryObj<typeof BlockProperties>;
 export const Default: Story = {
   render: () => (
     <>
-      {packagesInput.map((packageInput) => (
+      {packagesInput.map((packageInput, index) => (
         <BlockProperties
           name={packageInput.name}
           versionId={packageInput.versionId}
           versionNumber={packageInput.versionNumber}
           packageProperties={packageInput.packageProperties}
+          key={index}
         />
       ))}
     </>

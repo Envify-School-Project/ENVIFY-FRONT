@@ -13,7 +13,7 @@ describe('<ButtonCopy />', () => {
   });
 
   it('Get basics fields', () => {
-    const {} = render(<ButtonCopy value="value" />);
+    render(<ButtonCopy value="value" />);
 
     expect(screen.getByRole('button')).toBeInTheDocument();
   });

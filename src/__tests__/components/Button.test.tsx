@@ -13,13 +13,13 @@ describe('<Button />', () => {
   });
 
   it('Get basics fields', () => {
-    const {} = render(<Button>Click</Button>);
+    render(<Button>Click</Button>);
 
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('Disabled button', () => {
-    const {} = render(<Button disabled>Click</Button>);
+    render(<Button disabled>Click</Button>);
     const button = screen.getByRole('button');
 
     expect(button).toBeDisabled();

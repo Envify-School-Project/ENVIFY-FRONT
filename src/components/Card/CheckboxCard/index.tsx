@@ -43,16 +43,16 @@ export const CheckboxCard = (props: CardCheckBoxProps) => {
         </Flex>
         <Box>
           <Text c="white">{props.title}</Text>
+          {packageChecked && (
+            <PackageVersionSelect
+              packageId={props.packageId}
+              selectedVersion={selectedVersion}
+              handleVersion={handleVersion}
+            />
+          )}
         </Box>
       </Flex>
       <Checkbox onChange={handlePackageChecked} tabIndex={-1} />
-      {packageChecked && (
-        <PackageVersionSelect
-          packageId={props.packageId}
-          selectedVersion={selectedVersion}
-          handleVersion={handleVersion}
-        />
-      )}
     </Flex>
   );
 };

@@ -1,5 +1,11 @@
-const useFormatDateRelative = (dateString: string): string => {
-  const date = new Date(dateString);
+export const getArrayFirsts =
+  <T>(limit: number) =>
+  (arr: T[] | undefined): T[] => {
+    return arr?.slice(0, limit) ?? [];
+  };
+
+export const formatDateRelative = (isoDateString: string): string => {
+  const date = new Date(isoDateString);
   const now = new Date();
   const diff = now.getTime() - date.getTime();
   const units = [
@@ -20,5 +26,3 @@ const useFormatDateRelative = (dateString: string): string => {
 
   return 'just now';
 };
-
-export default useFormatDateRelative;

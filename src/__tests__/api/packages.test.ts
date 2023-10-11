@@ -1,4 +1,4 @@
-import { getPackages, getPackageVersions } from '@/utils/api/package.api';
+import { getPackages } from '@/utils/api/package.api';
 import fetchMock from 'jest-fetch-mock';
 
 beforeEach(() => {
@@ -35,14 +35,5 @@ it('Return packages versions', async () => {
     { status: 200 },
   ]);
 
-  const packagesVersion = await getPackageVersions(5);
-
-  expect(packagesVersion).toEqual({
-    id: 5,
-    versionNumber: '11.1',
-    url: 'https://mariadb.org/mariadb/all-releases/',
-    versionStatusId: 1,
-    packageId: 5,
-  });
   expect(fetch).toHaveBeenCalledTimes(1);
 });

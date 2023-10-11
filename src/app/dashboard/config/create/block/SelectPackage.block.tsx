@@ -25,9 +25,14 @@ export const SelectPackage = () => {
       if (index === -1)
         return form.insertListItem('packages', {
           name: packageName,
-          version: packageVersion,
+          packageVersions: {
+            id: packageVersion,
+          },
         });
-      return form.setFieldValue(`packages.${index}.version`, packageVersion);
+      return form.setFieldValue(
+        `packages.${index}.packageVersions.id`,
+        packageVersion
+      );
     },
     [form]
   );
@@ -55,9 +60,10 @@ const GridSelectPackage = ({
         <GridCol span={4} key={pkg.id}>
           <CheckboxCard
             packageId={pkg.id}
-            title={pkg.name}
+            name={pkg.name}
             // todo: remove used image url
             image="https://cdn.iconscout.com/icon/free/png-256/certbot-1175037.png"
+            versions={pkg.packageVersions}
             onChange={handleChange}
           />
         </GridCol>

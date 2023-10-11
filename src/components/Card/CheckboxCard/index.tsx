@@ -19,6 +19,7 @@ type CardCheckBoxProps = {
 };
 
 export const CheckboxCard = (props: CardCheckBoxProps) => {
+  console.log('props.versions:', props.versions);
   const [selectedVersion, setSelectedVersion] = useState<string | null>(
     props.versions.length > 0 ? String(props.versions[0].id) : null
   );

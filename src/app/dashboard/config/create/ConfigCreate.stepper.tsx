@@ -8,13 +8,10 @@ import { ConfigNameBlock } from './block/ConfigName.block';
 import { SelectPackage } from './block/SelectPackage.block';
 import { StepperButtons } from '@/components/Stepper/StepperButton';
 import { UseFormInput, hasLength, isNotEmpty } from '@mantine/form';
-import {
-  ConfigContext,
-  ConfigFormProvider,
-  useConfigForm,
-} from './configForm.context';
+import { ConfigFormProvider, useConfigForm } from './configForm.context';
+import { ConfigInput } from '@/utils/types/config.type';
 
-export const configCreateFormInput: UseFormInput<ConfigContext> = {
+export const configCreateFormInput: UseFormInput<ConfigInput> = {
   initialValues: {
     configName: '',
     operatingSystem: {

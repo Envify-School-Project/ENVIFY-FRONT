@@ -20,11 +20,6 @@ export const LoginForm = () => {
 
     validate: (values) => ({
       email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
-      password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
-        values.password
-      )
-        ? null
-        : 'Password must include at least one letter, number and special character',
     }),
   });
 

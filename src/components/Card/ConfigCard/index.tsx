@@ -1,5 +1,5 @@
 import classes from './ConfigCard.module.css';
-import { formatDateRelative, getArrayFirsts } from '@/utils/helpers';
+import { getFormatDateRelative, getArrayFirsts } from '@/utils/helpers';
 import { Avatar, AvatarGroup, Box, Flex, Text } from '@mantine/core';
 import { BsChevronRight } from 'react-icons/bs';
 import type { Config, Package } from '@/utils/types/config.type';
@@ -13,7 +13,7 @@ export const ConfigCard = ({
   type?: string;
 }) => {
   const slicedPackages = getArrayFirsts<Package>(3)(config?.packages);
-  const formattedCreatedAt = formatDateRelative(config?.created_at);
+  const formattedCreatedAt = getFormatDateRelative(config?.created_at);
 
   return (
     <Link

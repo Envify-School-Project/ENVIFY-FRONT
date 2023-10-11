@@ -4,7 +4,7 @@ export const getArrayFirsts =
     return arr?.slice(0, limit) ?? [];
   };
 
-export const formatDateRelative = (isoDateString: string): string => {
+export const getFormatDateRelative = (isoDateString: string): string => {
   const date = new Date(isoDateString);
   const now = new Date();
   const diff = now.getTime() - date.getTime();

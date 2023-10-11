@@ -2,14 +2,15 @@
 export type PackageDto = {
   id: number;
   name: string;
+  packageVersions: PackageVersionDto[];
 };
 
 export type PackageVersionDto = {
   id: number;
   versionStatusId: number;
   packageId: number;
-  url?: string | null;
-  versionNumber?: string | null;
+  url: string;
+  versionNumber: string;
 };
 
 export type PackageConfigFilesDto = {
@@ -20,10 +21,16 @@ export type PackageConfigFilesDto = {
 };
 
 export type PackageInput = {
+  id: number;
   name: string;
-  versionId: number;
-  versionNumber: number;
+  packageVersions: PackageVersionsInput;
   packageProperties: PackageProperties[];
+};
+
+type PackageVersionsInput = {
+  id: number;
+  packageId: number;
+  versionNumber: string;
 };
 
 export type PackageProperties = {

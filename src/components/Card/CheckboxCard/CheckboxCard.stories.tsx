@@ -14,7 +14,7 @@ const meta: Meta<typeof CheckboxCard> = {
     },
   },
   argTypes: {
-    title: {
+    name: {
       description: `Title of card.`,
     },
     onChange: {
@@ -49,7 +49,7 @@ export const Default: Story = {
       <>
         <CheckboxCard
           packageId={1}
-          title={'Nodejs'}
+          name={'Nodejs'}
           image={'https://nodejs.org/static/images/logo.svg'}
           onChange={handleChange}
         />
@@ -68,7 +68,7 @@ export const WithoutImage: Story = {
       <>
         <CheckboxCard
           packageId={1}
-          title={'Nodejs'}
+          name={'Nodejs'}
           image={''}
           onChange={handleChange}
         />
@@ -84,7 +84,7 @@ export const WithoutVersion: Story = {
 
     return (
       <>
-        <CheckboxCard title={'Nodejs'} packageId={1} onChange={handleChange} />
+        <CheckboxCard name={'Nodejs'} packageId={1} onChange={handleChange} />
         <DisplayValue value={value} />
       </>
     );

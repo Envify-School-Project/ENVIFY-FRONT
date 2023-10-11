@@ -1,12 +1,15 @@
 import { Button } from '@/components/Button';
 import { Header } from '@/components/Nav/Header';
+import { NextAuthProvider } from '@/utils/providers/next-auth.provider';
 import { Box, Container, Flex, Text, Title } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <NextAuthProvider>
+        <Header />
+      </NextAuthProvider>
       <Box mt={100} mb="xl">
         <Container size="md" pb="lg">
           <Title order={1} size={64} ta="center">

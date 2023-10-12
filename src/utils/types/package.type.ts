@@ -16,15 +16,15 @@ export type PackageVersionDto = {
 export type PackagePropertiesDto = {
   id: number;
   packageVersionId: number;
+  properties: string;
   description?: string | null;
-  properties?: string | null;
 };
 
 export type PackageInput = {
   id: number;
   name: string;
   packageVersions: PackageVersionsInput;
-  packageProperties: PackageProperties[];
+  packageProperties: PropertiesInput[];
 };
 
 type PackageVersionsInput = {
@@ -33,37 +33,49 @@ type PackageVersionsInput = {
   versionNumber: string;
 };
 
-export type PackageProperties = {
+export type PackagePropertiesInput = {
+  packageName: string;
+  packageVersionId: number;
+  properties: PropertiesInput[];
+};
+
+export type PropertiesInput = PropertiesMultipleInput | PropertiesSingleInput;
+
+type PropertiesText = {
   category?: string | null;
   field: string;
   label: string;
-} & (PackagePropertiesMultipleInput | PackagePropertiesInput);
-
-type PackagePropertiesText = {
   type: 'text';
   value: string;
 };
 
-type PackagePropertiesSwitch = {
+type PropertiesSwitch = {
+  category?: string | null;
+  field: string;
+  label: string;
   type: 'boolean';
   value: boolean;
 };
 
-type PackagePropertiesSelect = {
+type PropertiesSelect = {
+  category?: string | null;
+  field: string;
+  label: string;
   type: 'select';
   value: string;
   items: string[];
 };
 
-type PackagePropertiesInput =
-  | PackagePropertiesText
-  | PackagePropertiesSwitch
-  | PackagePropertiesSelect;
+export type PropertiesSingleInput =
+  | PropertiesText
+  | PropertiesSwitch
+  | PropertiesSelect;
 
-type PackagePropertiesMultipleInput = {
+export type PropertiesMultipleInput = {
   type: 'multiple';
-  properties: ({
-    field: string;
-    label: string;
-  } & PackagePropertiesInput)[];
+  category?: string | null;
+  field: string;
+  label: string;
+  properties: PropertiesSingleInput[];
+  value: PropertiesMultipleInput['properties'][];
 };

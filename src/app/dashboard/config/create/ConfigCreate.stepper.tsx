@@ -20,6 +20,7 @@ export const configCreateFormInput: UseFormInput<ConfigInput> = {
       versionId: 0,
     },
     packages: [],
+    packagesProperties: [],
   },
   validate: {
     configName: hasLength(
@@ -63,7 +64,11 @@ export const ConfigCreateStepper = () => {
           </Step>
         </Stepper>
         <StepperButtons
-          stepsValidation={[['configName', 'operatingSystem'], 'packages']}
+          stepsValidation={[
+            ['configName', 'operatingSystem'],
+            'packages',
+            'packagesProperties',
+          ]}
         />
       </StepperProvider>
     </StepperFormProvider>

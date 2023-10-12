@@ -1,5 +1,5 @@
 import { OperatingSystemInput } from './operatingSystem.type';
-import { PackageInput } from './package.type';
+import { PackageInput, PackagePropertiesInput } from './package.type';
 
 export type Package = {
   name: string;
@@ -27,4 +27,5 @@ export type ConfigInput = {
   configName: string;
   operatingSystem: OperatingSystemInput;
   packages: PackageInput[];
+  packagesProperties: PackagePropertiesInput[];
 };

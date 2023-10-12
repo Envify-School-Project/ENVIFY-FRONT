@@ -3,7 +3,7 @@ import { useConfigFormContext } from '../configForm.context';
 import { getPackageProperties } from '@/utils/api/package.api';
 import { useQuery } from 'react-query';
 import { BlockProperties } from '@/components/BlockProperties';
-import { useMemo } from 'react';
+import { useEffect } from 'react';
 import { Box } from '@mantine/core';
 
 export const ConfigProperties = () => {
@@ -14,37 +14,42 @@ export const ConfigProperties = () => {
 
   const form = useConfigFormContext();
 
-  console.log(packageProperties);
+  useEffect(() => {
+    const filterPackageProperties = () => {
+      if (!packageProperties) return [];
+      const packageVersionsId = form.values.packages.map(
+        (pck) => pck.packageVersions.id
+      );
 
-  const selectedPackageProperties = useMemo(() => {
-    if (!packageProperties) return [];
+      return packageProperties
+        .filter((properties) =>
+          packageVersionsId.includes(properties.packageVersionId)
+        )
+        .map((packageProperties) => ({
+          packageVersionId: packageProperties.packageVersionId,
+          properties: JSON.parse(packageProperties.properties),
+          packageName: form.values.packages.find(
+            (pck) =>
+              pck.packageVersions.id === packageProperties.packageVersionId
+          )?.name as string,
+        }));
+    };
 
-    const packageVersionsId = form.values.packages.map(
-      (pck) => pck.packageVersions.id
-    );
-    // console.log(packageVersionsId.includes([5]));
-    return packageProperties
-      .filter((properties) =>
-        packageVersionsId.includes(properties.packageVersionId)
-      )
-      .map((packageProperties) => ({
-        ...packageProperties,
-        name: form.values.packages.find(
-          (pck) => pck.packageVersions.id == packageProperties.packageVersionId
-        )?.name,
-      }));
-  }, [packageProperties, form]);
+    const selectedPackageProperties = filterPackageProperties();
 
-  console.log(selectedPackageProperties);
+    form.setFieldValue('packagesProperties', selectedPackageProperties);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [packageProperties]);
 
   return (
     <>
-      {selectedPackageProperties.length > 0 ? (
-        selectedPackageProperties.map((item, index) => (
+      {form.values.packagesProperties.length > 0 ? (
+        form.values.packagesProperties.map((item, index) => (
           <BlockProperties
-            key={index}
-            name={item.name as string}
-            packageProperties={JSON.parse(item.properties as string)}
+            key={`${index}-${item.packageName}`}
+            packagePropertyIndex={index}
+            packageProperty={item}
           />
         ))
       ) : (

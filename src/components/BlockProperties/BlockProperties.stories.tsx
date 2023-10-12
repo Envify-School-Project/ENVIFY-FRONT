@@ -59,7 +59,7 @@ export const Default: Story = {
           name={packageInput.name}
           versionId={packageInput.versionId}
           versionNumber={packageInput.versionNumber}
-          packageProperties={packageInput.packageProperties}
+          properties={packageInput.packageProperties}
           key={index}
         />
       ))}

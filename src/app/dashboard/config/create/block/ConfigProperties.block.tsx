@@ -5,9 +5,10 @@ import { useQuery } from 'react-query';
 import { BlockProperties } from '@/components/BlockProperties';
 import { useEffect } from 'react';
 import { Box } from '@mantine/core';
+import { Loader } from '@/components/Loader';
 
 export const ConfigProperties = () => {
-  const { data: packageProperties } = useQuery(
+  const { isLoading, data: packageProperties } = useQuery(
     'packageProperties',
     getPackageProperties
   );
@@ -42,6 +43,8 @@ export const ConfigProperties = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [packageProperties]);
 
+  if (isLoading) return <Loader />;
+
   return (
     <>
       {form.values.packagesProperties.length > 0 ? (
@@ -63,7 +66,7 @@ const EmptyBlockProperties = () => {
   return (
     <Box>
       Vous n'avez pas de configurations supplémentaires. Veuillez continuer pour
-      la génération du script
+      la génération du script.
     </Box>
   );
 };

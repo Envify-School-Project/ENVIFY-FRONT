@@ -41,36 +41,6 @@ export type PackagePropertiesInput = {
 
 export type PropertiesInput = PropertiesMultipleInput | PropertiesSingleInput;
 
-type PropertiesText = {
-  category?: string | null;
-  field: string;
-  label: string;
-  type: 'text';
-  value: string;
-};
-
-type PropertiesSwitch = {
-  category?: string | null;
-  field: string;
-  label: string;
-  type: 'boolean';
-  value: boolean;
-};
-
-type PropertiesSelect = {
-  category?: string | null;
-  field: string;
-  label: string;
-  type: 'select';
-  value: string;
-  items: string[];
-};
-
-export type PropertiesSingleInput =
-  | PropertiesText
-  | PropertiesSwitch
-  | PropertiesSelect;
-
 export type PropertiesMultipleInput = {
   type: 'multiple';
   category?: string | null;
@@ -78,4 +48,34 @@ export type PropertiesMultipleInput = {
   label: string;
   properties: PropertiesSingleInput[];
   value: PropertiesMultipleInput['properties'][];
+};
+
+export type PropertiesSingleInput =
+  | PropertiesText
+  | PropertiesSwitch
+  | PropertiesSelect;
+
+type PropertiesText = {
+  type: 'text';
+  category?: string | null;
+  field: string;
+  label: string;
+  value: string;
+};
+
+type PropertiesSwitch = {
+  type: 'boolean';
+  category?: string | null;
+  field: string;
+  label: string;
+  value: boolean;
+};
+
+type PropertiesSelect = {
+  type: 'select';
+  category?: string | null;
+  field: string;
+  label: string;
+  value: string;
+  items: string[];
 };

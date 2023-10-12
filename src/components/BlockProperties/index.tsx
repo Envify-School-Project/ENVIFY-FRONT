@@ -33,7 +33,7 @@ export const BlockProperties = ({
         {packageProperty.packageName}
       </Title>
       {packageProperty.properties.map((pck, index) => (
-        <Box mb="sm" key={`${pck.label}-${packagePropertyIndex}`}>
+        <Box mb="xs" key={`${pck.label}-${packagePropertyIndex}`}>
           <PropertiesDisplay
             {...pck}
             packagePropertyIndex={packagePropertyIndex}
@@ -53,10 +53,10 @@ type ArrayIndexes = {
 const PropertiesDisplay = (props: PropertiesInput & ArrayIndexes) => {
   switch (props.type) {
     case 'multiple':
-      return <PropertiesMultipleInput {...props} />;
+      return <MultipleInputs {...props} />;
     default:
       return (
-        <PropertiesInput
+        <SingleInput
           {...props}
           fieldPath={`packagesProperties.${props.packagePropertyIndex}.properties.${props.propertyIndex}.value`}
         />
@@ -64,9 +64,79 @@ const PropertiesDisplay = (props: PropertiesInput & ArrayIndexes) => {
   }
 };
 
-const PropertiesInput = (
-  props: PropertiesSingleInput & { fieldPath: string }
-) => {
+const MultipleInputs = (props: PropertiesMultipleInput & ArrayIndexes) => {
+  const form = useConfigFormContext();
+
+  const [propertiesValues, handlersPropertiesValues] = useListState([
+    props.properties,
+  ]);
+
+  useEffect(() => {
+    form.setFieldValue(
+      `packagesProperties.${props.packagePropertyIndex}.properties.${props.propertyIndex}.value`,
+      propertiesValues
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.packagePropertyIndex, props.propertyIndex, propertiesValues]);
+
+  console.log(propertiesValues);
+
+  const addSubProperties = () =>
+    handlersPropertiesValues.append(props.properties);
+
+  const deleteSubProperties = (index: number) =>
+    handlersPropertiesValues.remove(index);
+
+  const setSubProperties = (
+    propertyIndex: number,
+    subPropertyIndex: number,
+    value: string
+  ) => {
+    handlersPropertiesValues.setState((prevPropertiesValues) => {
+      const newPropertiesValues = JSON.parse(
+        JSON.stringify(prevPropertiesValues)
+      );
+
+      newPropertiesValues[propertyIndex][subPropertyIndex].value = value;
+
+      return newPropertiesValues;
+    });
+  };
+
+  return (
+    <Box mx="lg" my="lg">
+      <Flex align="center" gap={10} mb="sm">
+        <Title order={3}>{props.label}:</Title>
+        <Button mb="0" onClick={addSubProperties}>
+          Add {props.label}
+        </Button>
+      </Flex>
+      {propertiesValues.map((value, index) => (
+        <Box key={`${props.label}-${props.propertyIndex}-${index}`} mb={10}>
+          <Text mb="xs">
+            {props.label} {index + 1}
+          </Text>
+          {value.map((property, propertyIndex) => (
+            <Box mb="xs" key={`${property.label}-${index}`}>
+              <PropertiesInputs
+                {...property}
+                packagePropertyIndex={index}
+                propertyIndex={propertyIndex}
+                handlers={setSubProperties}
+              />
+            </Box>
+          ))}
+          <Button mt="sm" onClick={() => deleteSubProperties(index)}>
+            Supprimer {props.label}
+          </Button>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+const SingleInput = (props: PropertiesSingleInput & { fieldPath: string }) => {
   const form = useConfigFormContext();
 
   switch (props.type) {
@@ -99,79 +169,10 @@ const PropertiesInput = (
           {...form.getInputProps(props.fieldPath)}
           defaultValue={props.value}
           value={props.value}
+          type="text"
         />
       );
   }
-};
-
-const PropertiesMultipleInput = (
-  props: PropertiesMultipleInput & ArrayIndexes
-) => {
-  const form = useConfigFormContext();
-
-  const [propertiesValues, handlersPropertiesValues] = useListState([
-    props.properties,
-  ]);
-
-  useEffect(() => {
-    form.setFieldValue(
-      `packagesProperties.${props.packagePropertyIndex}.properties.${props.propertyIndex}.value`,
-      propertiesValues
-    );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.packagePropertyIndex, props.propertyIndex, propertiesValues]);
-
-  const addSubProperties = () =>
-    handlersPropertiesValues.append(props.properties);
-
-  const deleteSubProperties = (index: number) =>
-    handlersPropertiesValues.remove(index);
-
-  const setSubProperties = (
-    propertyIndex: number,
-    subPropertyIndex: number,
-    value: string
-  ) => {
-    handlersPropertiesValues.setState((prevPropertiesValues) => {
-      const newPropertiesValues = JSON.parse(
-        JSON.stringify(prevPropertiesValues)
-      );
-
-      newPropertiesValues[propertyIndex][subPropertyIndex].value = value;
-
-      return newPropertiesValues;
-    });
-  };
-
-  return (
-    <Box mt="lg" ml={25}>
-      <Flex align="baseline" gap={10}>
-        <Title order={4}>{props.label}</Title>
-        <Button onClick={addSubProperties}> Add {props.label} </Button>
-      </Flex>
-      {propertiesValues.map((value, index) => (
-        <Box key={`${props.label}-${props.propertyIndex}-${index}`} mb={10}>
-          <Text>
-            {props.label} {index + 1}
-          </Text>
-          {value.map((property, propertyIndex) => (
-            <Box key={`${property.label}-${index}`}>
-              <PropertiesInputs
-                {...property}
-                packagePropertyIndex={index}
-                propertyIndex={propertyIndex}
-                handlers={setSubProperties}
-              />
-            </Box>
-          ))}
-          <Button onClick={() => deleteSubProperties(index)}>
-            Supprimer {props.label}
-          </Button>
-        </Box>
-      ))}
-    </Box>
-  );
 };
 
 const PropertiesInputs = (
@@ -217,6 +218,7 @@ const PropertiesInputs = (
             )
           }
           value={props.value}
+          type="text"
         />
       );
   }

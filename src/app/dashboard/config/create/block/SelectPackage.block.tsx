@@ -26,7 +26,7 @@ export const SelectPackage = () => {
         return form.insertListItem('packages', {
           name: packageName,
           packageVersions: {
-            id: packageVersion,
+            id: Number(packageVersion),
           },
         });
       return form.setFieldValue(

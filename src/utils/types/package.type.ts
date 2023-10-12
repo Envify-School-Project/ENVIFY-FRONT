@@ -13,7 +13,7 @@ export type PackageVersionDto = {
   versionNumber: string;
 };
 
-export type PackageConfigFilesDto = {
+export type PackagePropertiesDto = {
   id: number;
   packageVersionId: number;
   description?: string | null;
@@ -34,14 +34,12 @@ type PackageVersionsInput = {
 };
 
 export type PackageProperties = {
+  category?: string | null;
+  field: string;
   label: string;
-} & (
-  | PackagePropertiesInput
-  | PackagePropertiesSwitch
-  | PackagePropertiesSelect
-);
+} & (PackagePropertiesMultipleInput | PackagePropertiesInput);
 
-type PackagePropertiesInput = {
+type PackagePropertiesText = {
   type: 'text';
   value: string;
 };
@@ -53,5 +51,19 @@ type PackagePropertiesSwitch = {
 
 type PackagePropertiesSelect = {
   type: 'select';
-  value: string[];
+  value: string;
+  items: string[];
+};
+
+type PackagePropertiesInput =
+  | PackagePropertiesText
+  | PackagePropertiesSwitch
+  | PackagePropertiesSelect;
+
+type PackagePropertiesMultipleInput = {
+  type: 'multiple';
+  properties: ({
+    field: string;
+    label: string;
+  } & PackagePropertiesInput)[];
 };

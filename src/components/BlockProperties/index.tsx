@@ -2,13 +2,22 @@ import { PackageInput, PackageProperties } from '@/utils/types/package.type';
 import { Box, Select, Switch, TextInput, Title } from '@mantine/core';
 import React from 'react';
 
-export const BlockProperties = (packageInput: PackageInput) => {
+type BlockPropertiesProps = {
+  name: string;
+  packageProperties: PackageProperties[];
+};
+
+export const BlockProperties = ({
+  name,
+  packageProperties,
+}: BlockPropertiesProps) => {
+  console.log(packageProperties);
   return (
     <Box mb="xl">
       <Title order={2} mb="sm">
-        {packageInput.name}
+        {name}
       </Title>
-      {packageInput.packageProperties.map((pck, index) => (
+      {packageProperties.map((pck, index) => (
         <Box mb="sm" key={index}>
           <InputDisplay {...pck} />
         </Box>
@@ -32,12 +41,12 @@ const InputDisplay = (props: PackageProperties) => {
         <Select
           label={props.label}
           placeholder={props.label}
-          data={props.value}
-          defaultValue={props.value[0]}
+          data={props.items}
+          defaultValue={props.value}
           required={true}
         />
       );
-    default:
+    case 'text':
       return (
         <TextInput
           placeholder={props.label}
@@ -46,5 +55,9 @@ const InputDisplay = (props: PackageProperties) => {
           defaultValue={props.value}
         />
       );
+    default:
+      return props.properties.map((property, index) => (
+        <InputDisplay key={index} {...property} />
+      ));
   }
 };

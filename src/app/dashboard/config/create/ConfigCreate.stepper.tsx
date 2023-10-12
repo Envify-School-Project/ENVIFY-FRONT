@@ -10,6 +10,7 @@ import { StepperButtons } from '@/components/Stepper/StepperButton';
 import { UseFormInput, hasLength, isNotEmpty } from '@mantine/form';
 import { ConfigFormProvider, useConfigForm } from './configForm.context';
 import { ConfigInput } from '@/utils/types/config.type';
+import { ConfigProperties } from './block/ConfigProperties.block';
 
 export const configCreateFormInput: UseFormInput<ConfigInput> = {
   initialValues: {
@@ -53,6 +54,12 @@ export const ConfigCreateStepper = () => {
             description="Container, packages, db... "
           >
             <SelectPackage />
+          </Step>
+          <Step
+            label="Select you properties"
+            description="Choose your personal propeties"
+          >
+            <ConfigProperties />
           </Step>
         </Stepper>
         <StepperButtons

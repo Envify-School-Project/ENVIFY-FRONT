@@ -10,6 +10,7 @@ import {
   useConfigForm,
 } from '@/app/dashboard/config/create/configForm.context';
 import { configCreateFormInput } from '@/app/dashboard/config/create/ConfigCreate.stepper';
+import { ConfigProperties } from '@/app/dashboard/config/create/block/ConfigProperties.block';
 
 const meta: Meta<typeof StepperFormProvider> = {
   title: 'components/Forms/StepperForm',
@@ -48,13 +49,19 @@ export const Default: Story = {
             <ConfigNameBlock />
           </Step>
           <Step
-            label="Select your modules"
-            description="Container, packages, db... "
+            label="Select you properties"
+            description="Choose your personal propeties"
           >
-            <SelectPackage />
+            <ConfigProperties />
           </Step>
         </Stepper>
-        <StepperButtons stepsValidation={['configName', 'packages']} />
+        <StepperButtons
+          stepsValidation={[
+            ['configName', 'operatingSystem'],
+            'packages',
+            'packagesProperties',
+          ]}
+        />
       </StepperProvider>
     </StepperFormProvider>
   ),

@@ -4,7 +4,6 @@ import { Container } from '@mantine/core';
 import { StepperFormProvider, StepperProvider } from './Stepper.provider';
 import { StepperButtons } from './StepperButton';
 import { ConfigNameBlock } from '@/app/dashboard/config/create/block/ConfigName.block';
-import { SelectPackage } from '@/app/dashboard/config/create/block/SelectPackage.block';
 import {
   ConfigFormProvider,
   useConfigForm,

@@ -5,9 +5,6 @@ import {
   StepperFormProvider,
   StepperProvider,
 } from '../Stepper/Stepper.provider';
-import { Step, Stepper } from '../Stepper/Stepper';
-import { ConfigProperties } from '@/app/dashboard/config/create/block/ConfigProperties.block';
-import { StepperButtons } from '../Stepper/StepperButton';
 import { configCreateFormInput } from '@/app/dashboard/config/create/ConfigCreate.stepper';
 import {
   ConfigFormProvider,

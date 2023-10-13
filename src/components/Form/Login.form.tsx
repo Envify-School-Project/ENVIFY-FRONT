@@ -2,14 +2,15 @@
 import { useForm } from '@mantine/form';
 import {
   Box,
-  Button,
   Text,
   TextInput,
   Title,
   PasswordInput,
+  Flex,
 } from '@mantine/core';
 import { UserLogType } from '@/utils/types/user.type';
 import { signIn } from 'next-auth/react';
+import { Button } from '../Button';
 
 export const LoginForm = () => {
   const form = useForm<UserLogType>({
@@ -61,6 +62,14 @@ export const LoginForm = () => {
           Sign in
         </Button>
       </form>
+      <Flex mt={15} align="center">
+        <Text size="sm" c="gray.3">
+          You dont have an account ?
+        </Text>
+        <Button href="/register" variant="arrow" px={2} miw="4.25rem">
+          Sing up
+        </Button>
+      </Flex>
     </Box>
   );
 };

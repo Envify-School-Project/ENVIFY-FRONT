@@ -1,23 +1,25 @@
 import { Button } from '@/components/Button';
 import { Header } from '@/components/Nav/Header';
 import { NextAuthProvider } from '@/utils/providers/next-auth.provider';
-import { Box, Container, Flex, Text, Title } from '@mantine/core';
+import { DetailsBlock } from '@/components/Block/Details';
+import { StepBlock } from '@/components/Block/Steps';
+import { Box, Container, Flex, SimpleGrid, Text, Title } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 
 export default function Home() {
   return (
-    <>
+    <SimpleGrid cols={1} spacing="xl">
       <NextAuthProvider>
         <Header />
       </NextAuthProvider>
-      <Box mt={100} mb="xl">
+      <Box mt={100} mb="xl" h={'55vh'}>
         <Container size="md" pb="lg">
           <Title order={1} size={64} ta="center">
             Simplify your virtual machine configuration effortlessly
           </Title>
         </Container>
         <Container size="sm" pb="lg">
-          <Text size="md" ta="center">
+          <Text size="md" ta="center" c="dimmed">
             Focus on what matters the most, save time and configure your virtual
             machine in few clicks. You choose, we provide all you need
           </Text>
@@ -39,6 +41,10 @@ export default function Home() {
           </Box>
         </Flex>
       </Box>
-    </>
+      <Box bg="dark.5">
+        <DetailsBlock />
+      </Box>
+      <StepBlock />
+    </SimpleGrid>
   );
 }

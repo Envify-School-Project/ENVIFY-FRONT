@@ -1,6 +1,6 @@
 import { OperatingSystemInput } from './operatingSystem.type';
 import { ConfigArraySchema, ConfigSchema } from '../schemas/config.schema';
-import { PackageInput, PackagePropertiesInput } from './package.type';
+import { PackageInput } from './package.type';
 import { z } from 'zod';
 
 export type Configs = z.infer<typeof ConfigArraySchema>;
@@ -19,8 +19,8 @@ export type Script = {
 };
 
 export type ConfigInput = {
-  configName: string;
-  operatingSystem: OperatingSystemInput;
+  name: string;
+  description?: string;
+  os: OperatingSystemInput;
   packages: PackageInput[];
-  packagesProperties: PackagePropertiesInput[];
 };

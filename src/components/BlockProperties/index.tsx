@@ -80,8 +80,6 @@ const MultipleInputs = (props: PropertiesMultipleInput & ArrayIndexes) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.packagePropertyIndex, props.propertyIndex, propertiesValues]);
 
-  console.log(propertiesValues);
-
   const addSubProperties = () =>
     handlersPropertiesValues.append(props.properties);
 

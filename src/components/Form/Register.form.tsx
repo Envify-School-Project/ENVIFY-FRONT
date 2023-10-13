@@ -7,7 +7,6 @@ import {
   Title,
   PasswordInput,
   Group,
-  Flex,
 } from '@mantine/core';
 import { CreateUserDto } from '@/utils/types/user.type';
 import { userRegister } from '@/utils/api/user.api';

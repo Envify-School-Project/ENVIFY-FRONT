@@ -36,12 +36,6 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
         throw error;
       }
 
-      if (!response.ok) {
-        const res = await response.text();
-        const error = isJSONString(res) ? JSON.parse(res) : res;
-        throw error;
-      }
-
       return response.json() as Promise<TOutput>;
     } catch (error) {
       return responseErrorHandler(getErrorMessage(error));

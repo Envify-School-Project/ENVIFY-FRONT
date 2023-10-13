@@ -1,3 +1,5 @@
+import { getErrorMessage, isJSONString } from '../helpers';
+
 const responseStatusHandler = (status: number) => {
   if (status === 401) {
     // gestion de l'erreur d'authentification
@@ -6,7 +8,6 @@ const responseStatusHandler = (status: number) => {
 };
 
 const responseErrorHandler = (error: unknown) => {
-  console.log(error);
   return Promise.reject(error);
 };
 
@@ -25,16 +26,15 @@ const apiFactory = (baseUrl: string) => ({
         },
       });
 
-      responseStatusHandler(response.status);
-      if (!response.ok)
-        throw new Error(
-          response.status + ' Something went wrong ! Please retry again later.'
-        );
+      if (!response.ok) {
+        const res = await response.text();
+        const error = isJSONString(res) ? JSON.parse(res) : res;
+        throw error;
+      }
 
       return response.json() as Promise<TOutput>;
     } catch (error) {
-      console.log('Error:', error);
-      return responseErrorHandler(error);
+      return responseErrorHandler(getErrorMessage(error));
     }
   },
 

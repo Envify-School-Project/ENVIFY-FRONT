@@ -1,5 +1,5 @@
 import { userAuthenticate } from '@/utils/api/user.api';
-import type { AuthOptions } from 'next-auth';
+import { getServerSession, type AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: AuthOptions = {
@@ -39,4 +39,9 @@ export const authOptions: AuthOptions = {
     signIn: '/login',
     newUser: '/register', // New users will be directed here on first sign in (leave the property out if not of interest)
   },
+};
+
+export const getAuthSession = async () => {
+  const session = await getServerSession();
+  return session;
 };

@@ -1,15 +1,13 @@
 import { Button } from '@/components/Button';
 import { Header } from '@/components/Nav/Header';
-import { NextAuthProvider } from '@/utils/providers/next-auth.provider';
 import { Box, Container, Flex, Text, Title } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 
 export default function Home() {
   return (
     <>
-      <NextAuthProvider>
-        <Header />
-      </NextAuthProvider>
+      {/* @ts-expect-error Async Server Components */}
+      <Header />
       <Box mt={100} mb="xl">
         <Container size="md" pb="lg">
           <Title order={1} size={64} ta="center">

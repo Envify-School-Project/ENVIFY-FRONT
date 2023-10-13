@@ -1,12 +1,11 @@
-'use client';
 import React from 'react';
 import { Flex, Box } from '@mantine/core';
 import { Button, ButtonIcon } from '../../Button';
 import { GiHexagonalNut } from 'react-icons/gi';
-import { useSession } from 'next-auth/react';
+import { getAuthSession } from '@/utils/authOptions';
 
-export const Header = () => {
-  const { data: session } = useSession();
+export const Header = async () => {
+  const session = await getAuthSession();
 
   return (
     <Flex

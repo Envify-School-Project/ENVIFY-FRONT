@@ -7,6 +7,7 @@ import { signOut } from 'next-auth/react';
 
 const links = [
   { name: 'My Configs', href: '/dashboard/config/all' },
+  { name: 'Create a Config', href: '/dashboard/config/create' },
   {
     name: 'Suggested configs',
     href: '/dashboard/suggested-config/all',

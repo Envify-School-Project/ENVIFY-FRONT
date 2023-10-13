@@ -1,4 +1,3 @@
-import { getSession } from 'next-auth/react';
 import { getAuthSession } from '../authOptions';
 import { getErrorMessage, isJSONString } from '../helpers';
 
@@ -32,6 +31,10 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
       });
 
       responseStatusHandler(response.status);
+      if (!response.ok)
+        throw new Error(
+          response.status + ' Something went wrong ! Please retry again later.'
+        );
 
       if (!response.ok) {
         const res = await response.text();

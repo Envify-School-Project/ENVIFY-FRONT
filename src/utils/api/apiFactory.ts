@@ -30,11 +30,11 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
         },
       });
 
-      responseStatusHandler(response.status);
-      if (!response.ok)
-        throw new Error(
-          response.status + ' Something went wrong ! Please retry again later.'
-        );
+      if (!response.ok) {
+        const res = await response.text();
+        const error = isJSONString(res) ? JSON.parse(res) : res;
+        throw error;
+      }
 
       if (!response.ok) {
         const res = await response.text();

@@ -18,9 +18,7 @@ export const ConfigProperties = () => {
   useEffect(() => {
     const filterPackageProperties = () => {
       if (!packageProperties) return [];
-      const packageVersionsId = form.values.packages.map(
-        (pck) => pck.packageVersions.id
-      );
+      const packageVersionsId = form.values.packages.map((pck) => pck.verionId);
 
       return packageProperties
         .filter((properties) =>
@@ -30,8 +28,7 @@ export const ConfigProperties = () => {
           packageVersionId: packageProperties.packageVersionId,
           properties: JSON.parse(packageProperties.properties),
           packageName: form.values.packages.find(
-            (pck) =>
-              pck.packageVersions.id === packageProperties.packageVersionId
+            (pck) => pck.verionId === packageProperties.packageVersionId
           )?.name as string,
         }));
     };

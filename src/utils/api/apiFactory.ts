@@ -6,7 +6,7 @@ const responseStatusHandler = (status: number) => {
 };
 
 const responseErrorHandler = (error: unknown) => {
-  // Gérez les erreurs  ici
+  console.log(error);
   return Promise.reject(error);
 };
 
@@ -26,9 +26,14 @@ const apiFactory = (baseUrl: string) => ({
       });
 
       responseStatusHandler(response.status);
+      if (!response.ok)
+        throw new Error(
+          response.status + ' Something went wrong ! Please retry again later.'
+        );
 
       return response.json() as Promise<TOutput>;
     } catch (error) {
+      console.log('Error:', error);
       return responseErrorHandler(error);
     }
   },

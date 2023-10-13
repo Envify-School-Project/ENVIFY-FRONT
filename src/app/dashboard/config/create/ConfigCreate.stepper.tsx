@@ -14,23 +14,25 @@ import { ConfigProperties } from './block/ConfigProperties.block';
 
 export const configCreateFormInput: UseFormInput<ConfigInput> = {
   initialValues: {
-    configName: '',
-    operatingSystem: {
-      id: 0,
+    name: '',
+    description: '',
+    os: {
       versionId: 0,
+      versionNumber: '',
+      name: '',
     },
     packages: [],
-    packagesProperties: [],
   },
   validate: {
-    configName: hasLength(
+    name: hasLength(
       { min: 3, max: 10 },
       'the config name should be more than 2 characters long'
     ),
     packages: isNotEmpty('Please Select a Package'),
-    operatingSystem: {
-      id: hasLength({ min: 1 }, 'Please Select an Os'),
-      versionId: hasLength({ min: 1 }, 'Please Select an Os version'),
+    os: {
+      versionId: hasLength({ min: 1 }, 'Please Select an Os'),
+      name: hasLength({ min: 1 }, 'Please Select an Os'),
+      versionNumber: hasLength({ min: 1 }, 'Please Select an Os version'),
     },
   },
 };
@@ -65,7 +67,7 @@ export const ConfigCreateStepper = () => {
         </Stepper>
         <StepperButtons
           stepsValidation={[
-            ['configName', 'operatingSystem'],
+            ['name', 'os.name', 'os.versionNumber'],
             'packages',
             'packagesProperties',
           ]}

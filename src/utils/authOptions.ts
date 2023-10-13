@@ -1,5 +1,5 @@
 import { userAuthenticate } from '@/utils/api/user.api';
-import { getServerSession, type AuthOptions } from 'next-auth';
+import { type AuthOptions, getServerSession } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: AuthOptions = {
@@ -24,14 +24,14 @@ export const authOptions: AuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  session: { strategy: 'jwt' },
 
   callbacks: {
     async jwt({ token }) {
       return token;
     },
-    async session({ session, token, user }) {
-      session.user = { ...token, ...user };
+    async session({ session, token }) {
+      if (!session?.user) return session;
+      session.user.access_token = token;
       return session;
     },
   },
@@ -42,6 +42,6 @@ export const authOptions: AuthOptions = {
 };
 
 export const getAuthSession = async () => {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   return session;
 };

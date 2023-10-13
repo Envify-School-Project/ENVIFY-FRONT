@@ -6,7 +6,6 @@ import { getAuthSession } from '@/utils/authOptions';
 
 export const Header = async () => {
   const session = await getAuthSession();
-
   return (
     <Flex
       style={{

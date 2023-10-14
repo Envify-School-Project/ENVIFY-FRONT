@@ -28,6 +28,7 @@ export const ConfigNameBlock = (): JSX.Element => {
         placeholder="Enter a config description"
         label="Config description"
         name="name"
+        multiline
         {...form.getInputProps('description')}
       />
       <SimpleGrid cols={2}>

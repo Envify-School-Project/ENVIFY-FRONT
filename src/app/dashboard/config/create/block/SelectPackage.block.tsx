@@ -25,7 +25,6 @@ export const SelectPackage = () => {
   const { isLoading, data: packages } = useQuery('packages', getPackages);
 
   const form = useConfigFormContext();
-  console.log('form:', form.values.packages);
 
   const handleChange: HandleVersion = useCallback(
     (packageId, name, packageVersion, checked) => {
@@ -42,6 +41,7 @@ export const SelectPackage = () => {
           packageId,
           versionId: Number(packageVersion.versionId),
           versionNumber: packageVersion.versionNumber,
+          packageProperties: [],
         });
 
       form.setFieldValue(

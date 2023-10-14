@@ -3,7 +3,6 @@ import { getErrorMessage, isJSONString } from '../helpers';
 
 const responseStatusHandler = (status: number) => {
   if (status === 401) {
-    // gestion de l'erreur d'authentification
     return Promise.reject(new Error('Unauthorized'));
   }
 };
@@ -28,6 +27,8 @@ const apiFactory = (baseUrl: string) => ({
           Authorization: `Bearer ${session?.jwtToken}`,
         },
       });
+
+      responseStatusHandler(response.status);
 
       if (!response.ok) {
         const res = await response.text();

@@ -47,7 +47,6 @@ const apiFactory = (baseUrl: string) => ({
     options: RequestInit = {}
   ): Promise<TOutput> => {
     try {
-      const session = await getAuthSession();
       const response = await fetch(`${baseUrl}${path}`, {
         ...options,
         method: 'POST',
@@ -56,7 +55,6 @@ const apiFactory = (baseUrl: string) => ({
           ...options.headers,
           'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${session?.jwtToken}`,
         },
       });
 

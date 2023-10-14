@@ -1,5 +1,10 @@
 import { OperatingSystemInput } from './operatingSystem.type';
 import { PackageInput } from './package.type';
+import { ConfigArraySchema, ConfigSchema } from '../schemas/config.schema';
+import { z } from 'zod';
+
+export type Configs = z.infer<typeof ConfigArraySchema>;
+export type Config = z.infer<typeof ConfigSchema>;
 
 export type Package = {
   name: string;
@@ -12,16 +17,6 @@ export type Script = {
   comment: string;
   script: string;
 };
-
-export type Config = {
-  id: number;
-  name: string;
-  created_at: string;
-  packages: Package[];
-  scripts?: Script[];
-};
-
-export type Configs = Config[];
 
 export type ConfigInput = {
   configName: string;

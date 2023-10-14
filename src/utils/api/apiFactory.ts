@@ -30,6 +30,8 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
         },
       });
 
+      responseStatusHandler(response.status);
+
       if (!response.ok) {
         const res = await response.text();
         const error = isJSONString(res) ? JSON.parse(res) : res;

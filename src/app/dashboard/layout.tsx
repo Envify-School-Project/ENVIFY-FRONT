@@ -10,22 +10,19 @@ export default async function DashboardLayout({
 }) {
   const session = await getAuthSession();
 
+  // Todo: deconnect user before token expiration
   if (session?.jwtToken) {
     const decodedToken = jwt_decode(session.jwtToken);
-
     console.log(decodedToken);
   }
   return (
-    <>
-      <AppShell navbar={{ width: 250, breakpoint: 'sm' }}>
-        <Sidebar />
-        <AppShellMain>
-          <Container mt="xl" size="lg">
-            {children}
-          </Container>
-        </AppShellMain>
-      </AppShell>
-      <></>
-    </>
+    <AppShell navbar={{ width: 250, breakpoint: 'sm' }}>
+      <Sidebar />
+      <AppShellMain>
+        <Container mt="xl" size="lg">
+          {children}
+        </Container>
+      </AppShellMain>
+    </AppShell>
   );
 }

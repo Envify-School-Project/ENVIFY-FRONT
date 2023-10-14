@@ -1,39 +1,15 @@
 import type { StoryObj, Meta } from '@storybook/react';
 import { BlockProperties } from '.';
 import React from 'react';
-import { PackageInput } from '@/utils/types/package.type';
-
-const packagesInput: PackageInput[] = [
-  {
-    name: 'mariadb',
-    versionId: 1,
-    versionNumber: 12.0,
-    packageProperties: [
-      {
-        label: 'You want to install brew',
-        type: 'boolean',
-        value: false,
-      },
-      {
-        label: 'Give a user name',
-        type: 'text',
-        value: '',
-      },
-    ],
-  },
-  {
-    name: 'docker',
-    versionId: 2,
-    versionNumber: 2.1,
-    packageProperties: [
-      {
-        label: 'Select version docker',
-        type: 'select',
-        value: ['10', '11', '12'],
-      },
-    ],
-  },
-];
+import {
+  StepperFormProvider,
+  StepperProvider,
+} from '../Stepper/Stepper.provider';
+import { configCreateFormInput } from '@/app/dashboard/config/create/ConfigCreate.stepper';
+import {
+  ConfigFormProvider,
+  useConfigForm,
+} from '@/app/dashboard/config/create/configForm.context';
 
 const meta: Meta<typeof BlockProperties> = {
   title: 'components/Blocks/BlockProperties',
@@ -53,16 +29,61 @@ type Story = StoryObj<typeof BlockProperties>;
 
 export const Default: Story = {
   render: () => (
-    <>
-      {packagesInput.map((packageInput, index) => (
+    <StepperFormProvider
+      formInput={configCreateFormInput}
+      FormProvider={ConfigFormProvider}
+      useForm={useConfigForm}
+    >
+      <StepperProvider>
         <BlockProperties
-          name={packageInput.name}
-          versionId={packageInput.versionId}
-          versionNumber={packageInput.versionNumber}
-          packageProperties={packageInput.packageProperties}
-          key={index}
+          packageProperty={{
+            packageName: 'Maria DB',
+            packageVersionId: 5,
+            properties: [
+              {
+                type: 'text',
+                category: 'mysqld',
+                field: 'port',
+                label: 'Port',
+                value: '3306',
+              },
+              {
+                type: 'select',
+                category: 'user',
+                field: 'user',
+                label: 'Add user',
+                value: 'OFF',
+                items: ['on', 'off'],
+              },
+              {
+                type: 'multiple',
+                category: 'server',
+                field: 'server',
+                label: 'Add server',
+                value: [],
+                properties: [
+                  {
+                    type: 'text',
+                    category: 'mysqld',
+                    field: 'port',
+                    label: 'Port',
+                    value: '3306',
+                  },
+                  {
+                    type: 'select',
+                    category: 'user',
+                    field: 'user',
+                    label: 'Add user',
+                    value: 'OFF',
+                    items: ['on', 'off'],
+                  },
+                ],
+              },
+            ],
+          }}
+          packagePropertyIndex={5}
         />
-      ))}
-    </>
+      </StepperProvider>
+    </StepperFormProvider>
   ),
 };

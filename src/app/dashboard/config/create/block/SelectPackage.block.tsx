@@ -7,9 +7,10 @@ import { useQuery } from 'react-query';
 import { useCallback } from 'react';
 import { PackageDto } from '@/utils/types/package.type';
 import { ConfigError } from './ConfigError.block';
+import { Loader } from '@/components/Loader';
 
 export const SelectPackage = () => {
-  const { data: packages } = useQuery('packages', getPackages);
+  const { isLoading, data: packages } = useQuery('packages', getPackages);
 
   const form = useConfigFormContext();
 
@@ -26,7 +27,7 @@ export const SelectPackage = () => {
         return form.insertListItem('packages', {
           name: packageName,
           packageVersions: {
-            id: packageVersion,
+            id: Number(packageVersion),
           },
         });
       return form.setFieldValue(
@@ -37,7 +38,10 @@ export const SelectPackage = () => {
     [form]
   );
 
+  if (isLoading) return <Loader />;
+
   if (!packages || !packages.length) return <ConfigError />;
+
   return <GridSelectPackage packages={packages} handleChange={handleChange} />;
 };
 

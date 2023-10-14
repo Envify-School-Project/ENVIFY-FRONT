@@ -1,8 +1,8 @@
 import React from 'react';
-import { Flex, Box } from '@mantine/core';
-import { Button, ButtonIcon } from '../../Button';
-import { GiHexagonalNut } from 'react-icons/gi';
+import { Flex } from '@mantine/core';
+import { Button } from '../../Button';
 import { getAuthSession } from '@/utils/authOptions';
+import { EnvifyLogoButton } from '@/components/Button/Logo.button';
 
 export const Header = async () => {
   const session = await getAuthSession();
@@ -17,22 +17,20 @@ export const Header = async () => {
       h={80}
       w="100%"
     >
-      <ButtonIcon>
-        <GiHexagonalNut size={24} />
-      </ButtonIcon>
+      <EnvifyLogoButton />
       <Flex>
-        <Box mr="1rem">
-          {session ? (
-            <Button variant="outline" href="/dashboard">
-              Dashboard
-            </Button>
-          ) : (
-            <Button variant="outline" href="/login">
+        {session ? (
+          <Button variant="outline" href="/dashboard">
+            Dashboard
+          </Button>
+        ) : (
+          <>
+            <Button variant="outline" href="/login" mr={16}>
               Login
             </Button>
-          )}
-        </Box>
-        <Button href="/register">Get started</Button>
+            <Button href="/register">Get started</Button>
+          </>
+        )}
       </Flex>
     </Flex>
   );

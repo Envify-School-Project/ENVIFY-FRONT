@@ -134,6 +134,14 @@ export const RegisterForm = () => {
           Register
         </Button>
       </form>
+      <Flex mt={15} align="center">
+        <Text size="sm" c="gray.3">
+          You have an account ?
+        </Text>
+        <Button href="/login" variant="arrow" px={2} miw="4.25rem">
+          Sing in
+        </Button>
+      </Flex>
     </Box>
   );
 };

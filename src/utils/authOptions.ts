@@ -2,6 +2,7 @@ import { userAuthenticate } from '@/utils/api/user.api';
 import { type AuthOptions, getServerSession } from 'next-auth';
 import { TOKEN_MAX_AGE } from '@/utils/helpers';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { getSession } from 'next-auth/react';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -56,7 +57,10 @@ export const authOptions: AuthOptions = {
   },
 };
 
-export const getAuthSession = async () => {
-  const session = await getServerSession(authOptions);
+export const getAuthSession = async (type: 'client' | 'server' = 'server') => {
+  const session =
+    type === 'server'
+      ? await getServerSession(authOptions)
+      : await getSession();
   return session;
 };

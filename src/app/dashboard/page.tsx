@@ -4,30 +4,16 @@ import { Box, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import { apiClient } from '@/utils/api/apiFactory';
 import { getArrayFirsts } from '@/utils/helpers';
-
 import type { Config } from '@/utils/types/config.type';
-import { getAuthSession } from '@/utils/authOptions';
-import { encode } from 'next-auth/jwt';
 
 export default async function Dashboard() {
-  const session = await getAuthSession();
-  const token = session?.user.access_token;
-  const tokenEncoded = token
-    ? await encode({ token, secret: process.env.NEXTAUTH_SECRET })
-    : null;
-
-  console.log(tokenEncoded);
-  // const userConfigs: Config[] = await apiClient.get('/configs/me', {
-  //   headers: [['Authorization', `Bearer ${tokenEncoded}`]],
-  // });
-
-  // console.log(userConfigs);
-  // const slicedConfigs = getArrayFirsts<Config>(3)(userConfigs) ?? [];
+  const userConfigs: Config[] = await apiClient.get('/configs/me');
+  const slicedConfigs = getArrayFirsts<Config>(3)(userConfigs) ?? [];
 
   return (
     <>
       <Button href="/dashboard/config/create">Create new config</Button>
-      {/* <Box mt={36}>
+      <Box mt={36}>
         {slicedConfigs?.length > 0 ? (
           <>
             <Button
@@ -50,7 +36,7 @@ export default async function Dashboard() {
         ) : (
           <p>You have no configurations yet.</p>
         )}
-      </Box> */}
+      </Box>
     </>
   );
 }

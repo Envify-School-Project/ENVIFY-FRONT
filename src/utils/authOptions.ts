@@ -1,5 +1,6 @@
 import { userAuthenticate } from '@/utils/api/user.api';
-import type { AuthOptions } from 'next-auth';
+import { type AuthOptions, getServerSession } from 'next-auth';
+import { TOKEN_MAX_AGE } from '@/utils/helpers';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: AuthOptions = {
@@ -19,19 +20,33 @@ export const authOptions: AuthOptions = {
         });
         if (!res) return null;
 
-        return { id: res.userId, email: res.email, apiToken: res.token };
+        const jwtToken = res.token;
+
+        return { id: res.userId, email: res.email, jwtToken };
       },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  session: { strategy: 'jwt' },
+  session: {
+    strategy: 'jwt',
+    maxAge: TOKEN_MAX_AGE,
+  },
 
   callbacks: {
-    async jwt({ token }) {
+    jwt: async ({ token, user }) => {
+      // user is only available the first time a user signs in authorized
+      if (user) {
+        return {
+          ...token,
+          jwt: user.jwtToken,
+        };
+      }
       return token;
     },
-    async session({ session, token, user }) {
-      session.user = { ...token, ...user };
+    session: async ({ session, token }) => {
+      if (token) {
+        session.jwtToken = token.jwt as string;
+      }
       return session;
     },
   },
@@ -39,4 +54,9 @@ export const authOptions: AuthOptions = {
     signIn: '/login',
     newUser: '/register', // New users will be directed here on first sign in (leave the property out if not of interest)
   },
+};
+
+export const getAuthSession = async () => {
+  const session = await getServerSession(authOptions);
+  return session;
 };

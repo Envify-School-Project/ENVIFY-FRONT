@@ -1,25 +1,20 @@
 import { Button } from '@/components/Button';
 import { ConfigCard } from '@/components/Card/ConfigCard';
-import { Box, Grid, GridCol } from '@mantine/core';
+import { Box, Flex, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
-import { apiServer } from '@/utils/api/apiFactory';
-import { getArrayFirsts } from '@/utils/helpers';
-import type { Configs, Config } from '@/utils/types/config.type';
-import { ConfigArraySchema } from '@/utils/schemas/config.schema';
+import { getValidConfigs } from './getValidConfigs';
+import { WarningConfig } from './config/Warning.config';
 
 export default async function Dashboard() {
-  const getUserConfigs: Configs = await apiServer.get('/configs/me');
-  const userConfigs = ConfigArraySchema.safeParse(getUserConfigs);
+  const { configs, errors } = await getValidConfigs(3);
 
-  if (userConfigs.success) {
-    const slicedConfigs = getArrayFirsts<Config>(3)(userConfigs.data) ?? [];
-
-    return (
-      <>
-        <Button href="/dashboard/config/create">Create new config</Button>
-        <Box mt={36}>
-          {slicedConfigs?.length > 0 ? (
-            <>
+  return (
+    <>
+      <Button href="/dashboard/config/create">Create new config</Button>
+      <Box mt={36}>
+        {configs?.length > 0 ? (
+          <>
+            <Flex align="center" justify="space-between">
               <Button
                 p={0}
                 variant="arrow"
@@ -28,27 +23,24 @@ export default async function Dashboard() {
               >
                 Your configurations
               </Button>
-              <Grid mt={24}>
-                {slicedConfigs.map((config) => (
-                  <GridCol key={config.id} span={4}>
-                    <ConfigCard config={config} />
-                  </GridCol>
-                ))}
-              </Grid>
-            </>
-          ) : (
-            <p>You have no configs yet.</p>
-          )}
-        </Box>
-      </>
-    );
-  } else {
-    console.error(userConfigs.error);
+              {errors?.hasSomeUnusableConfigs && (
+                <WarningConfig errors={errors} />
+              )}
+            </Flex>
 
-    return (
-      <p>
-        An error occurred while fetching your configs. Please try again later.
-      </p>
-    );
-  }
+            <Grid mt={24}>
+              {configs.map((config) => (
+                <GridCol key={config.id} span={4}>
+                  {/* @ts-expect-error Async Server Components */}
+                  <ConfigCard config={config} />
+                </GridCol>
+              ))}
+            </Grid>
+          </>
+        ) : (
+          <p>You have no configs yet.</p>
+        )}
+      </Box>
+    </>
+  );
 }

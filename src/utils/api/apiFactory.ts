@@ -1,4 +1,3 @@
-import { getSession } from 'next-auth/react';
 import { getAuthSession } from '../authOptions';
 import { getErrorMessage, isJSONString } from '../helpers';
 
@@ -51,7 +50,7 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
     options: RequestInit = {}
   ): Promise<TOutput> => {
     try {
-      const session = await getAuthSession(type);
+      const session = path === '/login' ? null : await getAuthSession(type);
       const response = await fetch(`${baseUrl}${path}`, {
         ...options,
         method: 'POST',
@@ -60,7 +59,7 @@ const apiFactory = (baseUrl: string, type: ServerType = 'server') => ({
           ...options.headers,
           'Content-Type': 'application/json',
           'ENVIFY-API-Key': `${process.env.NEXT_PUBLIC_ENVIFY_API_KEY}`,
-          Authorization: `Bearer ${session?.jwtToken}`,
+          Authorization: session ? `Bearer ${session.jwtToken}` : '',
         },
       });
 

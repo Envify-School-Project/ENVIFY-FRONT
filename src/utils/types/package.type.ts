@@ -1,4 +1,3 @@
-// todo : add logo
 export type PackageDto = {
   id: number;
   name: string;

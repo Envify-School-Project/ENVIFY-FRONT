@@ -1,9 +1,9 @@
 import { ConfigCard } from '@/components/Card/ConfigCard';
 import type { Config } from '@/utils/types/config.type';
 import { Grid, GridCol, Title } from '@mantine/core';
-import { apiClient } from '@/utils/api/apiFactory';
+import { apiServer } from '@/utils/api/apiFactory';
 export default async function ConfigsList() {
-  const suggestedConfigs: Config[] = await apiClient.get('/configs/suggested');
+  const suggestedConfigs: Config[] = await apiServer.get('/configs/suggested');
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { apiClient } from '@/utils/api/apiFactory';
+import { apiServer } from '@/utils/api/apiFactory';
 import { ConfigSchema } from '@/utils/schemas/config.schema';
 import { Config, Configs, ErrorDetails } from '@/utils/types/config.type';
 import { getArrayFirsts } from '@/utils/helpers';
@@ -13,7 +13,7 @@ export const getValidConfigs = async (configCount?: number) => {
   };
   const validConfigs: Configs = [];
 
-  const res: unknown = await apiClient.get('/configs/me');
+  const res: unknown = await apiServer.get('/configs/me');
   if (res instanceof Array && res.length > 0) {
     res.forEach((config: Config) => {
       const parsedConfig = ConfigSchema.safeParse(config);

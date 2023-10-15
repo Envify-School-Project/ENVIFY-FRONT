@@ -39,7 +39,7 @@ export type PropertiesMultipleInput = {
   field: string;
   label: string;
   properties: PropertiesSingleInput[];
-  value: PropertiesMultipleInput['properties'][];
+  values: PropertiesMultipleInput['properties'][];
 };
 
 export type PropertiesSingleInput =

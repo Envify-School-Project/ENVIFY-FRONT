@@ -3,7 +3,7 @@ import type { Config } from '@/utils/types/config.type';
 import { Grid, GridCol, Title } from '@mantine/core';
 import { apiClient } from '@/utils/api/apiFactory';
 export default async function ConfigsList() {
-  const suggestedConfigs: Config[] = await apiClient.get('/suggested_configs');
+  const suggestedConfigs: Config[] = await apiClient.get('/configs/suggested');
 
   return (
     <>
@@ -14,6 +14,7 @@ export default async function ConfigsList() {
         <Grid>
           {suggestedConfigs?.map((config) => (
             <GridCol span={4} key={config.id}>
+              {/* @ts-expect-error Async Server Components */}
               <ConfigCard config={config} type="suggested" />
             </GridCol>
           ))}

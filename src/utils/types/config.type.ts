@@ -12,6 +12,18 @@ export type Config = z.infer<typeof ConfigSchema>;
 
 export type Package = z.infer<typeof PackageSchema>;
 
+export type HiddenConfig = {
+  config: Config;
+  error: string;
+};
+
+export type ErrorDetails = {
+  hasSomeUnusableConfigs: boolean;
+  message: string;
+  messageDetails: string;
+  hiddenConfigs: HiddenConfig[];
+};
+
 export type Script = {
   comment: string;
   script: string;

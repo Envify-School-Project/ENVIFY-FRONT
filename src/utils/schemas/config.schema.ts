@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+export const PackageSchema = z.object({
+  name: z.string(),
+  versionNumber: z.string(),
+  packageVersionId: z.number(),
+  logo: z.string().optional(),
+});
+
 export const ConfigSchema = z.object({
   id: z.number(),
   userId: z.number(),
@@ -7,25 +14,8 @@ export const ConfigSchema = z.object({
   description: z.string().nullable().optional(),
   operatingSystemId: z.number(),
   operatingSystemName: z.string(),
+  packages: z.array(PackageSchema).min(1),
   created_at: z.string().optional(),
-  scripts: z
-    .array(
-      z.object({
-        comment: z.string(),
-        script: z.string(),
-      })
-    )
-    .optional(),
-  packages: z
-    .array(
-      z.object({
-        name: z.string(),
-        version: z.array(z.string()),
-        alias: z.string(),
-        logo: z.string().optional(),
-      })
-    )
-    .optional(),
 });
 
 export const ConfigArraySchema = z.array(ConfigSchema);

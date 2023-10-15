@@ -13,7 +13,7 @@ export const ConfigCard = ({
   type?: string;
 }) => {
   const slicedPackages = getArrayFirsts<Package>(3)(config?.packages);
-  const formattedCreatedAt = getFormatDateRelative(config?.created_at);
+  const formattedCreatedAt = getFormatDateRelative(config?.created_at ?? '');
 
   return (
     <Link
@@ -51,9 +51,9 @@ export const ConfigCard = ({
         </Box>
         <Flex justify="space-between">
           <Box>
-            {slicedPackages?.map((pkg: Package, i) => (
-              <Text size="xs" key={i} component="p">
-                {pkg.name} {pkg.version && `- ${pkg.version}`}
+            {slicedPackages?.map((pkg: Package) => (
+              <Text size="xs" key={pkg.packageVersionId} component="p">
+                {pkg.name} {pkg.versionNumber && `- ${pkg.versionNumber}`}
               </Text>
             ))}
           </Box>

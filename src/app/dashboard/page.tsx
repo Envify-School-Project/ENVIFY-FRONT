@@ -34,7 +34,7 @@ export default async function Dashboard() {
   const validConfigs: Configs = [];
   const errorDetails: ErrorDetails = {
     hasSomeUnusableConfigs: false,
-    message: 'Some of your configs has been hidden',
+    message: 'Some of your configs are not valid anymore',
     messageDetails:
       'Some of your configs has been hidden due to their unusability.\nPlease recreate them if needed or contact support.',
     hiddenConfigs: [],

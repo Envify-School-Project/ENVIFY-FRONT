@@ -1,3 +1,4 @@
+import { DownloadButton } from '@/components/Button/Download.button';
 import { Button } from '@/components/Button';
 import { Header } from '@/components/Nav/Header';
 import { DetailsBlock } from '@/components/Block/Details';
@@ -43,6 +44,19 @@ export default function Home() {
         <DetailsBlock />
       </Box>
       <StepBlock />
+      <Box mt="xl" mb="xl">
+        <Container size="sm">
+          <DownloadButton
+            script={[
+              "sudo apt update -y",
+              "curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash",
+              "sudo apt-get install mariadb-server mariadb-client -y",
+              "sudo systemctl status mariadb",
+              "sudo mysql_secure_installation",
+            ]}
+          />
+        </Container>
+      </Box>
     </SimpleGrid>
   );
 }

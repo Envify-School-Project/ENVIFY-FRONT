@@ -1,18 +1,9 @@
-import { Button, ButtonIcon } from '@/components/Button';
+import { Button } from '@/components/Button';
 import { ConfigCard } from '@/components/Card/ConfigCard';
-import {
-  Box,
-  Flex,
-  Grid,
-  GridCol,
-  Popover,
-  PopoverDropdown,
-  PopoverTarget,
-  Text,
-} from '@mantine/core';
+import { Box, Flex, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
 import { getValidConfigs } from './getValidConfigs';
-import { RiErrorWarningLine } from 'react-icons/ri';
+import { WarningConfig } from './config/Warning.config';
 
 export default async function Dashboard() {
   const { configs, errors } = await getValidConfigs(3);
@@ -33,32 +24,7 @@ export default async function Dashboard() {
                 Your configurations
               </Button>
               {errors?.hasSomeUnusableConfigs && (
-                <Flex align="center">
-                  <Text component="p" size="sm" c="gray.6">
-                    {errors.message}
-                  </Text>
-                  <Popover width={300} withArrow shadow="md">
-                    <PopoverTarget>
-                      <ButtonIcon mb={0}>
-                        <RiErrorWarningLine color="red" />
-                      </ButtonIcon>
-                    </PopoverTarget>
-                    <PopoverDropdown>
-                      <Text component="p" size="md" c="gray.4" mb="lg">
-                        {errors.messageDetails}
-                      </Text>
-
-                      <Text component="p" size="sm" c="gray.4">
-                        CONCERNED CONFIGS :
-                        {errors.hiddenConfigs.map(({ config }) => (
-                          <Text key={config.id} c="red">
-                            {config.name}
-                          </Text>
-                        ))}
-                      </Text>
-                    </PopoverDropdown>
-                  </Popover>
-                </Flex>
+                <WarningConfig errors={errors} />
               )}
             </Flex>
 

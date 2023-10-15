@@ -28,7 +28,7 @@ export const getValidConfigs = async (configCount?: number) => {
       }
     });
   }
-  if (!configCount) return { configs: validConfigs };
+  if (!configCount) return { configs: validConfigs, errors: errorDetails };
 
   const slicedValidConfigs = getArrayFirsts<Config>(configCount)(validConfigs);
 

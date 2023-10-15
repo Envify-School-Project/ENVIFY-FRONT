@@ -2,13 +2,13 @@ import { Button } from '@/components/Button';
 import { ConfigCard } from '@/components/Card/ConfigCard';
 import { Box, Grid, GridCol } from '@mantine/core';
 import { BsArrowRight } from 'react-icons/bs';
-import { apiClient } from '@/utils/api/apiFactory';
+import { apiServer } from '@/utils/api/apiFactory';
 import { getArrayFirsts } from '@/utils/helpers';
 import type { Configs, Config } from '@/utils/types/config.type';
 import { ConfigArraySchema } from '@/utils/schemas/config.schema';
 
 export default async function Dashboard() {
-  const getUserConfigs: Configs = await apiClient.get('/configs/me');
+  const getUserConfigs: Configs = await apiServer.get('/configs/me');
   const userConfigs = ConfigArraySchema.safeParse(getUserConfigs);
 
   if (userConfigs.success) {
